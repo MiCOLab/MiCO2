@@ -158,6 +158,7 @@
 				margin-top: -20px;
 				float: left;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -172,11 +173,8 @@
 		<!--设备详情-->
 		<div class="micocontent" data-role="page" id="homePage">
 			<div data-role="content" align="center">
-				<p id="devlistlodingid">
+				<p>
 					<a href="#aboutPage" data-transition="none">加载设备...</a>
-				</p>
-				<p id="devlistshowid">
-					<img src="../image/device_refresh.png" alt=""/>
 				</p>
 			</div>
 		</div>
@@ -268,6 +266,7 @@
 		<!--真实设备详情页面-->
 		<div class="micocontent" data-role="page" id="deviceinfo">
 			<div class="devctrlrowed">
+			
 				<ul>
 					<li class="devctrlrowed devinfoclsed">
 						<div align="center">
@@ -351,10 +350,10 @@
 		<!--RGB控制-->
 		<div class="micocontent" data-role="page" id="rgbctrl">
 			<!--<div class="onoffbtn">
-			<select id="rgbonoffbtn" data-role="slider" onchange="checkrgbbtn()">
-			<option>Off</option>
-			<option>On</option>
-			</select>
+				<select id="rgbonoffbtn" data-role="slider" onchange="checkrgbbtn()">
+					<option>Off</option>
+					<option>On</option>
+				</select>
 			</div>-->
 			<img id="rgbonoffbtn" src="../image/RGB-turn on80-80.svg"/>
 			<div data-role="content" class="canvascls" align="center">
@@ -389,133 +388,146 @@
 				<div class="serachText">
 					<img src="../image/06connect-circle15.svg"/>&nbsp; <span>请将设备进行配网</span>
 				</div>
+<<<<<<< .mine
+				<div class="psw">
+					<input type="text" data-theme="f" data-role="none" placeholder="WIFI密码" id="wifi_psw"/>
+=======
 				<div class="phoned">
 					<input type="text" data-theme="f" data-role="none" placeholder="Wi-Fi" id="wifi_ssid"/>
+>>>>>>> .r6
 				</div>
 				<div class="pswed">
 					<input type="text" data-theme="f" data-role="none"  placeholder="请输入Wi-Fi密码" id="wifi_psw"/>
 				</div>
-				<div class="subbutton" onclick="getdevip()" id="sousuoid">
-					<a class="easysearchcls" href="#" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false"><span>搜索 </span></a>
+				<div class="subbutton" onclick="getdevip()">
+					<span><a href="#">确定</a></span>
 				</div>
 			</div>
-			<!--EasyLink密码配置-->
-			<div class="micocontent" data-role="page" id="devmanage">
-				<div class="content">
-					<div class="p">
-						<img src="../image/icon1-120.png"/>
-					</div>
-					<div class="serachText2">
-						<img src="../image/06connect-circle15.svg"/>&nbsp; <span>配网成功.请设置设备密码</span>
-					</div>
-					<div class="phoned">
-						<input type="number" data-theme="f" data-role="none" placeholder="请输入四位设备密码" id="dev_psw"/>
-					</div>
-					<!--<div class="psw">
-					<input type="password" data-theme="f" data-role="none" placeholder="Password Confirmation" id="dev_psw_conf"/>
-					</div>-->
-					<div class="subbutton" onclick="ajaxgetdveid()">
-						<span><a href="#">确定</a></span>
-					</div>
-					<!--<div class="savetipscls" align="center">
-					<<<<<<< .mine
+		</div>
+		<!--EasyLink密码配置-->
+		<div class="micocontent" data-role="page" id="devmanage">
+			<div class="content">
+				<div class="p">
+					<img src="../image/icon1-120.png"/>
+				</div>
+				<div class="serachText2">
+					<img src="../image/06connect-circle15.svg"/>&nbsp; <span>配网成功.请设置设备密码</span>
+				</div>
+				<div class="phoned">
+					<input type="number" data-theme="f" data-role="none" placeholder="请输入四位设备密码" id="dev_psw"/>
+				</div>
+				. <!--<div class="psw">
+				<input type="password" data-theme="f" data-role="none" placeholder="Password Confirmation" id="dev_psw_conf"/>
+				</div>-->
+				<div class="subbutton" onclick="ajaxgetdveid()">
+					<span><a href="#">确定</a></span>
+				</div>
+				<!--<div class="savetipscls" align="center">
+<<<<<<< .mine
 					<span>设备密码请输入4位数字。</span>
-					=======
-					<span>设备需要重启，请5秒后再点击保存。</span>
-					>>>>>>> .r11
-					</div>-->
+=======
+				<span>设备需要重启，请5秒后再点击保存。</span>
+>>>>>>> .r11
+				</div>-->
+			</div>
+		</div>
+		<!--用户管理界面-->
+		<div class="myselfcontent" data-role="page" id="myselfpage">
+			<div class="myselfrow" id="userrowid">
+				<div class="myselflisttitle" align="center" id="toeditaccount">
+					<img class="rightarr" src="../image/touxiang.png"/>
+					<br/>
+					<span id="mynickname">NickName</span>
+				</div>
+				<ul>
+					<li class="myselfrow myselflistcls" >
+						<div>
+							<a href="#" id="toAuthpage"><img src="../image/03my account-Authorize70.svg"/><span class="lvzi">授权</span></a><a href="#" id="tofbpage"><img src="../image/03my account-feedback70.svg"/><span class="lanzi">反馈</span></a>
+						</div>
+					</li>
+					<li class="myselfrow myselflistcls" >
+						<div>
+							<a href="#" id="touphispage"><img src="../image/03my account-update70.svg"/><span class="lanzi">系统升级</span></a><a href="#"><img src="../image/03my account-guide70.svg"/><span class="lvzi">导航</span></a>
+						</div>
+					</li>
+					<!--<!--<li class="myselfrow myselflistcls" id="logout">
+					<!--<a href="#"><img src="../image/smallicon-dengchu.png"/><span>退出</span></a>-->
+					<!--</li>-->
+					<li class="myselfrow myselflistcls">
+						<div>
+							<a href="#" id=""><img src="../image/03my account-about70.svg"/><span class="lvzi">关于我们</span></a><a href="#"><img src="../image/03my account-more70-01.svg"/><span class="lanzi">更多</span></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--反馈信息-->
+		<div class="micocontent" data-role="page" data-theme="f" id="feedbackpage">
+			<div class="fdcontent">
+				<textarea rows="10" id="fdcontent" class="fdcontentcls"></textarea>
+				<div class="subbutton" id="savefd">
+					<span><a href="#">提交反馈</a></span>
 				</div>
 			</div>
-			<!--用户管理界面-->
-			<div class="myselfcontent" data-role="page" id="myselfpage">
-				<div class="myselfrow" id="userrowid">
-					<div class="myselflisttitle" align="center" id="toeditaccount">
-						<img class="rightarr" src="../image/touxiang.png"/>
-						<br/>
-						<span id="mynickname">NickName</span>
-					</div>
-					<ul>
-						<li class="myselfrow myselflistcls" >
-							<div>
-								<a href="#" id="toAuthpage"><img src="../image/03my account-Authorize70.svg"/><span class="lvzi">授权</span></a><a href="#" id="tofbpage"><img src="../image/03my account-feedback70.svg"/><span class="lanzi">反馈</span></a>
-							</div>
-						</li>
-						<li class="myselfrow myselflistcls" >
-							<div>
-								<a href="#" id="touphispage"><img src="../image/03my account-update70.svg"/><span class="lanzi">系统升级</span></a><a href="#"><img src="../image/03my account-guide70.svg"/><span class="lvzi">导航</span></a>
-							</div>
-						</li>
-						<!--<!--<li class="myselfrow myselflistcls" id="logout">
-						<!--<a href="#"><img src="../image/smallicon-dengchu.png"/><span>退出</span></a>-->
-						<!--</li>-->
-						<li class="myselfrow myselflistcls">
-							<div>
-								<a href="#" id=""><img src="../image/03my account-about70.svg"/><span class="lvzi">关于我们</span></a><a href="#"><img src="../image/03my account-more70-01.svg"/><span class="lanzi">更多</span></a>
-							</div>
-						</li>
-					</ul>
-				</div>
+		</div>
+		<!--更新日志-->
+		<div class="micocontent" data-role="page" data-theme="f" id="uphispage">
+			<div class="fdcontent" align="left" id="uphistextid"></div>
+		</div>
+		<!--设备授权-->
+		<div class="micocontent" data-role="page" id="authpage">
+			<div data-role="content" align="center">
+				<p>
+					<a href="#" data-transition="none">加载设备...</a>
+				</p>
 			</div>
-			<!--反馈信息-->
-			<div class="micocontent" data-role="page" data-theme="f" id="feedbackpage">
-				<div class="fdcontent">
-					<textarea rows="10" id="fdcontent" class="fdcontentcls"></textarea>
-					<div class="subbutton" id="savefd">
-						<span><a href="#">提交反馈</a></span>
-					</div>
-				</div>
+		</div>
+		<!--用户信息管理-->
+		<div class="myselfcontented" data-role="page" id="editaccount">
+			<div class="myselfrowed">
+				<ul>
+					<li class="myselfrowedp"></li>
+					<li class="myselfrowed myselflistclsed" id="nickclsid">
+						<img class="pitu"  src="../image/03my account-gender45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">昵称</span>
+						<div class="lcop" id="nicknameid">
+							lcopen
+						</div>
+					</li>
+					<li class="myselfrowed myselflistclsed" id="emailclsid">
+						<img class="pitu"  src="../image/03my account-email45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">Email</span>
+						<div class="devdetail" id="emailid">
+							未设置
+						</div>
+					</li>
+					<li class="myselfrowedp"></li>
+					<li class="myselfrowed myselflistclsed" id="pswclsid">
+						<img class="pitu"  src="../image/03my account-key45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">修改密码</span>
+					</li>
+					<li class="bk"></li>
+					<li class="banked" id="logout">
+						<a href="#"><span class="bank">退出登录</span></a>
+					</li>
+				</ul>
 			</div>
-			<!--更新日志-->
-			<div class="micocontent" data-role="page" data-theme="f" id="uphispage">
-				<div class="fdcontent" align="left" id="uphistextid"></div>
-			</div>
-			<!--设备授权-->
-			<div class="micocontent" data-role="page" id="authpage">
-				<div data-role="content" align="center">
-					<p id="devAuthlodingid">
-						<a href="#aboutPage" data-transition="none">加载设备...</a>
-					</p>
-					<p id="devAuthshowid">
-						<img src="../image/device_refresh.png" alt=""/>
-					</p>
-				</div>
-			</div>
-			<!--用户信息管理-->
-			<div class="myselfcontented" data-role="page" id="editaccount">
-				<div class="myselfrowed">
-					<ul>
-						<li class="myselfrowedp"></li>
-						<li class="myselfrowed myselflistclsed" id="nickclsid">
-							<img class="pitu"  src="../image/03my account-gender45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">昵称</span>
-							<div class="lcop" id="nicknameid">
-								lcopen
-							</div>
-						</li>
-						<li class="myselfrowed myselflistclsed" id="emailclsid">
-							<img class="pitu"  src="../image/03my account-email45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">Email</span>
-							<div class="devdetail" id="emailid">
-								未设置
-							</div>
-						</li>
-						<li class="myselfrowedp"></li>
-						<li class="myselfrowed myselflistclsed" id="pswclsid">
-							<img class="pitu"  src="../image/03my account-key45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">修改密码</span>
-						</li>
-						<li class="bk"></li>
-						<li class="banked" id="logout">
-							<a href="#"><span class="bank">退出登录</span></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!--隐藏标识项-->
-			<input type="hidden" id="devidtopic" value=""/>
+		</div>
+		<!--隐藏标识项-->
+		<input type="hidden" id="devidtopic" value=""/>
 	</body>
 	<script type="text/javascript" src="../script/colorPicker.js"></script>
 	<script type="text/javascript">
-		//		给pop加载的时候用
-		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' + '<img style="width:250px;" src="../image/easylink.gif"/>' + '<div class="subbutton" id="stopelbtn">' + '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' + '</div>' + '</div>');
-		$jqelpop.appendTo($("#sousuoid")).popup();
+		//亮度和饱和度
+		var bsliderMask;
+		var ssliderMask;
+		//是否开灯
+		//		var rgb_switch;rgb_hues
+		var width = 0.5 * document.body.clientWidth;
+		//		var width = 0.4 * document.body.clientHeight;
+		//按钮的高度,手机会有少许偏移，所以设成上移3个px
+		var switchbttop = width / 2 - 3;
+		var switchbleft = (document.body.clientWidth / 2) - 41;
+		//		var width = 250;
+		//上次的color指数
+		$('#rgbonoffbtn').css('margin-top', switchbttop).css('margin-left', switchbleft);
 		var strDM;
 		apiready = function() {
 			api.removeLaunchView();
@@ -569,22 +581,12 @@
 			//获取ssid
 			getWifiSsid();
 		});
-		//设备列表刷新
-		$("#devlistshowid").click(function() {
-			showRefreshImg(1);
-			devicelist_getDevList();
-		});
-		//授权设备刷新
-		$("#devAuthshowid").click(function() {
-			showAuthRefreshImg(1);
-			devicelist_getAuthDev();
-		});
 		//		前往rgb页面
 		$("#rgbliid").click(function() {
 			//		$("#torgbctrl").click(function() {
-			//rgbreadtag = 0;
+			rgbreadtag = 0;
 			changpage("rgbctrl", "");
-			if ("../image/switchon.svg" == $("#rgbonoffbtn").attr("src")) {
+			if ("On" == $("#rgbonoffbtn").find("option:selected").text()) {
 				ctrlrgb();
 			}
 			sliderctrl();
@@ -642,24 +644,6 @@
 			//	刷新内容
 			devicelist_getDevList();
 		});
-		//停止EasyLink
-		$("#stopelbtn").click(function() {
-			stopEasyLink();
-			PAGETAG = 5;
-		});
-		//rgb开关
-		$("#rgbonoffbtn").click(function() {
-			var btnsrc = $("#rgbonoffbtn").attr("src");
-			if ("../image/switchon.svg" == btnsrc) {
-				$("#rgbonoffbtn").attr("src", "../image/switchoff.svg");
-				window.clearInterval(rgbctrlinterval);
-				dealwithrgbbtn(false);
-			} else {
-				$("#rgbonoffbtn").attr("src", "../image/switchon.svg");
-				dealwithrgbbtn(true);
-				ctrlrgb();
-			}
-		});
 		//电动机控制
 		$("#motorbtn").click(function() {
 			var mtbtn = $("#motorbtn");
@@ -678,21 +662,13 @@
 	<!--以下是画圆圈的-->
 	<script type="text/javascript" src="../script/colorPicker.js"></script>
 	<script>
-		//亮度和饱和度
-		var bsliderMask;
-		var ssliderMask;
 		//是否开灯
 		//		var rgb_switch;rgb_hues
-		var width = 0.69 * document.body.clientWidth;
-		//		var width = 0.4 * document.body.clientHeight;
-		//按钮的高度,手机会有少许偏移，所以设成上移3个px
-		var switchbttop = width / 2 - 3;
-		var switchbleft = (document.body.clientWidth / 2) - 41;
+		var width = 0.4 * document.body.clientHeight;
 		//		var width = 250;
 		//上次的color指数
 		var lastrgbcode;
 		$('#colorPicker1').attr('width', width).attr('height', width);
-		$('#rgbonoffbtn').css('margin-top', switchbttop).css('margin-left', switchbleft);
 		var colorPicker = new colorPicker(document.getElementById('colorPicker1'), {
 			h : 0.5,
 			s : 5,
@@ -705,7 +681,7 @@
 		}
 
 		function ctrlrgb() {
-			rgbctrlinterval = self.setInterval("sendrgbcode()", 1 * 1000);
+			rgbctrlinterval = self.setInterval("sendrgbcode()", 2 * 1000);
 		}
 
 		function sendrgbcode() {
@@ -718,23 +694,21 @@
 			if (lastrgbcode == rgbcode) {
 				//没更新，不做处理
 			} else {
-				if ("../image/switchon.svg" == $("#rgbonoffbtn").attr("src")) {
-					micoPublish(DEVID_GLOBAL + "/in/write/" + app1, rgbcode);
-					lastrgbcode = rgbcode;
-				}
+				micoPublish(DEVID_GLOBAL + "/in/write/" + app1, rgbcode);
+				lastrgbcode = rgbcode;
 			}
 		}
 
 		function sliderctrl() {
 			//亮度
-			bsliderMask = new Dragdealer('brightslider', {
+			var bsliderMask = new Dragdealer('brightslider', {
 				animationCallback : function(x, y) {
 					$('#brightspanid').val(Math.round(x * 100));
 				}
 			});
 			bsliderMask.setValue(rgb_bright, 0, true);
 			//饱和度
-			ssliderMask = new Dragdealer('satslider', {
+			var ssliderMask = new Dragdealer('satslider', {
 				animationCallback : function(x, y) {
 					$('#satspanid').val(Math.round(x * 100));
 				}

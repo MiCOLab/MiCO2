@@ -399,117 +399,118 @@
 					<a class="easysearchcls" href="#" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false"><span>搜索 </span></a>
 				</div>
 			</div>
-			<!--EasyLink密码配置-->
-			<div class="micocontent" data-role="page" id="devmanage">
-				<div class="content">
-					<div class="p">
-						<img src="../image/icon1-120.png"/>
-					</div>
-					<div class="serachText2">
-						<img src="../image/06connect-circle15.svg"/>&nbsp; <span>配网成功.请设置设备密码</span>
-					</div>
-					<div class="phoned">
-						<input type="number" data-theme="f" data-role="none" placeholder="请输入四位设备密码" id="dev_psw"/>
-					</div>
-					<!--<div class="psw">
-					<input type="password" data-theme="f" data-role="none" placeholder="Password Confirmation" id="dev_psw_conf"/>
-					</div>-->
-					<div class="subbutton" onclick="ajaxgetdveid()">
-						<span><a href="#">确定</a></span>
-					</div>
-					<!--<div class="savetipscls" align="center">
-					<<<<<<< .mine
-					<span>设备密码请输入4位数字。</span>
-					=======
-					<span>设备需要重启，请5秒后再点击保存。</span>
-					>>>>>>> .r11
-					</div>-->
+		</div>
+		<!--EasyLink密码配置-->
+		<div class="micocontent" data-role="page" id="devmanage">
+			<div class="content">
+				<div class="p">
+					<img src="../image/icon1-120.png"/>
+				</div>
+				<div class="serachText2">
+					<img src="../image/06connect-circle15.svg"/>&nbsp; <span>配网成功.请设置设备密码</span>
+				</div>
+				<div class="phoned">
+					<input type="number" data-theme="f" data-role="none" placeholder="请输入四位设备密码" id="dev_psw"/>
+				</div>
+				<!--<div class="psw">
+				<input type="password" data-theme="f" data-role="none" placeholder="Password Confirmation" id="dev_psw_conf"/>
+				</div>-->
+				<div class="subbutton" onclick="ajaxgetdveid()">
+					<span><a href="#">确定</a></span>
+				</div>
+				<!--<div class="savetipscls" align="center">
+				<<<<<<< .mine
+				<span>设备密码请输入4位数字。</span>
+				=======
+				<span>设备需要重启，请5秒后再点击保存。</span>
+				>>>>>>> .r11
+				</div>-->
+			</div>
+		</div>
+		<!--用户管理界面-->
+		<div class="myselfcontent" data-role="page" id="myselfpage">
+			<div class="myselfrow" id="userrowid">
+				<div class="myselflisttitle" align="center" id="toeditaccount">
+					<img class="rightarr" src="../image/touxiang.png"/>
+					<br/>
+					<span id="mynickname">NickName</span>
+				</div>
+				<ul>
+					<li class="myselfrow myselflistcls" >
+						<div>
+							<a href="#" id="toAuthpage"><img src="../image/03my account-Authorize70.svg"/><span class="lvzi">授权</span></a><a href="#" id="tofbpage"><img src="../image/03my account-feedback70.svg"/><span class="lanzi">反馈</span></a>
+						</div>
+					</li>
+					<li class="myselfrow myselflistcls" >
+						<div>
+							<a href="#" id="touphispage"><img src="../image/03my account-update70.svg"/><span class="lanzi">系统升级</span></a><a href="#"><img src="../image/03my account-guide70.svg"/><span class="lvzi">导航</span></a>
+						</div>
+					</li>
+					<!--<!--<li class="myselfrow myselflistcls" id="logout">
+					<!--<a href="#"><img src="../image/smallicon-dengchu.png"/><span>退出</span></a>-->
+					<!--</li>-->
+					<li class="myselfrow myselflistcls">
+						<div>
+							<a href="#" id=""><img src="../image/03my account-about70.svg"/><span class="lvzi">关于我们</span></a><a href="#"><img src="../image/03my account-more70-01.svg"/><span class="lanzi">更多</span></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--反馈信息-->
+		<div class="micocontent" data-role="page" data-theme="f" id="feedbackpage">
+			<div class="fdcontent">
+				<textarea rows="10" id="fdcontent" class="fdcontentcls"></textarea>
+				<div class="subbutton" id="savefd">
+					<span><a href="#">提交反馈</a></span>
 				</div>
 			</div>
-			<!--用户管理界面-->
-			<div class="myselfcontent" data-role="page" id="myselfpage">
-				<div class="myselfrow" id="userrowid">
-					<div class="myselflisttitle" align="center" id="toeditaccount">
-						<img class="rightarr" src="../image/touxiang.png"/>
-						<br/>
-						<span id="mynickname">NickName</span>
-					</div>
-					<ul>
-						<li class="myselfrow myselflistcls" >
-							<div>
-								<a href="#" id="toAuthpage"><img src="../image/03my account-Authorize70.svg"/><span class="lvzi">授权</span></a><a href="#" id="tofbpage"><img src="../image/03my account-feedback70.svg"/><span class="lanzi">反馈</span></a>
-							</div>
-						</li>
-						<li class="myselfrow myselflistcls" >
-							<div>
-								<a href="#" id="touphispage"><img src="../image/03my account-update70.svg"/><span class="lanzi">系统升级</span></a><a href="#"><img src="../image/03my account-guide70.svg"/><span class="lvzi">导航</span></a>
-							</div>
-						</li>
-						<!--<!--<li class="myselfrow myselflistcls" id="logout">
-						<!--<a href="#"><img src="../image/smallicon-dengchu.png"/><span>退出</span></a>-->
-						<!--</li>-->
-						<li class="myselfrow myselflistcls">
-							<div>
-								<a href="#" id=""><img src="../image/03my account-about70.svg"/><span class="lvzi">关于我们</span></a><a href="#"><img src="../image/03my account-more70-01.svg"/><span class="lanzi">更多</span></a>
-							</div>
-						</li>
-					</ul>
-				</div>
+		</div>
+		<!--更新日志-->
+		<div class="micocontent" data-role="page" data-theme="f" id="uphispage">
+			<div class="fdcontent" align="left" id="uphistextid"></div>
+		</div>
+		<!--设备授权-->
+		<div class="micocontent" data-role="page" id="authpage">
+			<div data-role="content" align="center">
+				<p id="devAuthlodingid">
+					<a href="#aboutPage" data-transition="none">加载设备...</a>
+				</p>
+				<p id="devAuthshowid">
+					<img src="../image/device_refresh.png" alt=""/>
+				</p>
 			</div>
-			<!--反馈信息-->
-			<div class="micocontent" data-role="page" data-theme="f" id="feedbackpage">
-				<div class="fdcontent">
-					<textarea rows="10" id="fdcontent" class="fdcontentcls"></textarea>
-					<div class="subbutton" id="savefd">
-						<span><a href="#">提交反馈</a></span>
-					</div>
-				</div>
+		</div>
+		<!--用户信息管理-->
+		<div class="myselfcontented" data-role="page" id="editaccount">
+			<div class="myselfrowed">
+				<ul>
+					<li class="myselfrowedp"></li>
+					<li class="myselfrowed myselflistclsed" id="nickclsid">
+						<img class="pitu"  src="../image/03my account-gender45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">昵称</span>
+						<div class="lcop" id="nicknameid">
+							lcopen
+						</div>
+					</li>
+					<li class="myselfrowed myselflistclsed" id="emailclsid">
+						<img class="pitu"  src="../image/03my account-email45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">Email</span>
+						<div class="devdetail" id="emailid">
+							未设置
+						</div>
+					</li>
+					<li class="myselfrowedp"></li>
+					<li class="myselfrowed myselflistclsed" id="pswclsid">
+						<img class="pitu"  src="../image/03my account-key45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">修改密码</span>
+					</li>
+					<li class="bk"></li>
+					<li class="banked" id="logout">
+						<a href="#"><span class="bank">退出登录</span></a>
+					</li>
+				</ul>
 			</div>
-			<!--更新日志-->
-			<div class="micocontent" data-role="page" data-theme="f" id="uphispage">
-				<div class="fdcontent" align="left" id="uphistextid"></div>
-			</div>
-			<!--设备授权-->
-			<div class="micocontent" data-role="page" id="authpage">
-				<div data-role="content" align="center">
-					<p id="devAuthlodingid">
-						<a href="#aboutPage" data-transition="none">加载设备...</a>
-					</p>
-					<p id="devAuthshowid">
-						<img src="../image/device_refresh.png" alt=""/>
-					</p>
-				</div>
-			</div>
-			<!--用户信息管理-->
-			<div class="myselfcontented" data-role="page" id="editaccount">
-				<div class="myselfrowed">
-					<ul>
-						<li class="myselfrowedp"></li>
-						<li class="myselfrowed myselflistclsed" id="nickclsid">
-							<img class="pitu"  src="../image/03my account-gender45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">昵称</span>
-							<div class="lcop" id="nicknameid">
-								lcopen
-							</div>
-						</li>
-						<li class="myselfrowed myselflistclsed" id="emailclsid">
-							<img class="pitu"  src="../image/03my account-email45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">Email</span>
-							<div class="devdetail" id="emailid">
-								未设置
-							</div>
-						</li>
-						<li class="myselfrowedp"></li>
-						<li class="myselfrowed myselflistclsed" id="pswclsid">
-							<img class="pitu"  src="../image/03my account-key45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">修改密码</span>
-						</li>
-						<li class="bk"></li>
-						<li class="banked" id="logout">
-							<a href="#"><span class="bank">退出登录</span></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!--隐藏标识项-->
-			<input type="hidden" id="devidtopic" value=""/>
+		</div>
+		<!--隐藏标识项-->
+		<input type="hidden" id="devidtopic" value=""/>
 	</body>
 	<script type="text/javascript" src="../script/colorPicker.js"></script>
 	<script type="text/javascript">

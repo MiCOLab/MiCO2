@@ -30,7 +30,6 @@
 
 .devctrlrowed ul li img {
 	/*margin-left: 15px;*/
-	margin-top: px;
 	/*margin-left: 102px;*/
 	/*margin-top: 13px;*/
 	height: 102px;
@@ -43,9 +42,13 @@
 }
 .devctrlrowed .devinfoclsed {
 	height: 128px;
-	line-height: 72px;
+	line-height: 128px;
 	vertical-align: middle;
 	background: #222028;
+}
+
+.devctrlrowed .devinfoclsed div a{
+	width: 45%;
 }
 
 .devctrlrow .devinfocls img {
@@ -114,7 +117,6 @@
 	margin-left: 15px;
 	color: #222028;
 	font-size: 15px;
-	font-family: Arial;
 }
 .sebeitxt {
 	margin-left: 15px;
@@ -171,7 +173,7 @@
 	text-align: right;
 	margin-right: 15px;
 }
-/*<!--聊天列表-- >*/ 
+/*<!--聊天列表-- >*/
 .micocontent {
 	margin-top: 45px;
 	/*background-color: #F0F0F0;*/
@@ -184,7 +186,7 @@
 	height: 45px;
 	width: 45px;
 }
-.touxiang88Header{
+.touxiang88Header {
 	float: right;
 	margin-top: 4%;
 	height: 45px;
@@ -228,15 +230,6 @@
 	/*background-color: #18161d;*/
 	border-radius: 5px;
 }
-input {
-	height: 30px;
-	/*padding-left: 10px;*/
-	/*background: #2e2c36;*/
-	/*border-radius:20px;*/
-	color: #120f16;
-	/*width: 100%;*/
-	/*border: 1px solid #FFFFFF;*/
-}
 .phone {
 	/*border-bottom: 1px solid #CCCCCC;*/
 	/*background: #2e2c36;*/
@@ -247,14 +240,23 @@ input {
 	background: #2e2c36;
 	border-radius: 20px;
 	margin-top: 16px;
-	padding-left: 20px
+	padding-left: 20px;
+}
+.phoned input{
+	color: #FFFFFF;
+	height: 35px;
+	line-height: 35px;
 }
 .pswed {
 	background: #2e2c36;
 	border-radius: 20px;
-	color: #120f16;
 	margin-top: 16px;
-	padding-left: 20px
+	padding-left: 20px;
+}
+.pswed input{
+	height: 35px;
+	line-height: 35px;
+	color: #FFFFFF;
 }
 .styled {
 	border-bottom: 1px solid #CCCCCC;
@@ -293,6 +295,8 @@ input {
 	margin-top: 16px;
 }
 .subbutton {
+	height: 35px;
+	line-height: 35px;
 	margin-top: 30px;
 	text-align: center;
 	/*background-image: url(../image/search-330-60.png);*/

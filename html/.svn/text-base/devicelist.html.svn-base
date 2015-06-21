@@ -123,22 +123,14 @@
 				font-size: 15px;
 				font-family: arial;
 			}
-			.aaa {
-				width: 30%;
-				vertical-align: middle;
-				border-style: solid;
-				border-right-width: 15px;
-				background-color: #18161d;
-				/*height: 120px;width: 1px;color: #18161d;margin-top: 2%;*/
-			}
 			.UartTU {
 				/*margin-left: 20%;*/
 				/*margin-right: 80%*/
-				margin-right: 76px;
+				/*margin-right: 76px;*/
 				/*vertical-align: middle;*/
 			}
 			.RGBTU {
-				margin-left: 76px;
+				/*margin-left: 76px;*/
 				/*margin-right: 90%*/
 				/*vertical-align: middle;*/
 			}
@@ -187,7 +179,6 @@
 					<li class="devctrlrowed devinfoclsed">
 						<div align="center">
 							<a href="#" id="vchatliid"><img src="../image/uart.png" class="UartTU"/></a>
-							<a class="aaa" style="height:112px;width:1px;color:#18161d;margin-top:3%;vertical-align: middle;"></a>
 							<a href="#" id="vrgbliid"><img src="../image/RGB.png" class="RGBTU"/></a>
 						</div>
 					</li>
@@ -272,7 +263,6 @@
 					<li class="devctrlrowed devinfoclsed">
 						<div align="center">
 							<a href="#" id="chatliid"><img src="../image/uart.png" class="UartTU"/></a>
-							<a class="aaa" style="height:112px;width:1px;color:#18161d;margin-top:3%;vertical-align: middle;"></a>
 							<a href="#" id="rgbliid"><img src="../image/RGB.png" class="RGBTU"/></a>
 						</div>
 					</li>
@@ -356,24 +346,25 @@
 			<option>On</option>
 			</select>
 			</div>-->
-			<img id="rgbonoffbtn" src="../image/RGB-turn on80-80.svg"/>
+			<img id="rgbonoffbtn" src="../image/switchon.svg"/>
 			<div data-role="content" class="canvascls" align="center">
 				<canvas id="colorPicker1"></canvas>
 				<br/>
 				<span class="colorspancls">亮度</span>
 				<div id="brightslider" class="dragdealer">
+					<!--<img class="BrightnessRight" src="../image/RGB-Brightness01-01.svg"/>-->
 					<div class="handle red-bar">
-						<img class="BrightnessRight" src="../image/RGB-Brightness01-01.svg"/>
 						<span class="brightval" id="brightspanid"></span>
-						<img class="BrightnessLeft" src="../image/RGB-Brightness02-01.svg" style="margin-left:315px;">
 					</div>
+					<!--<img class="BrightnessLeft" src="../image/RGB-Brightness02-01.svg" style="margin-left:315px;">-->
 				</div>
 				<span class="colorspancls">饱和度</span>
 				<div id="satslider" class="dragdealer">
+					<!--<img class="BrightnessRight" src="../image/RGB-Saturation01-01.svg"/>-->
 					<div class="handle red-bar">
-						<img class="BrightnessRight" src="../image/RGB-Saturation01-01.svg"/>
-						<span class="satval" id="satspanid"><img class="BrightnessLeft" src="../image/RGB-Saturation02-01.svg" style="margin-top:-40px;"></span>
+						<span class="satval" id="satspanid">
 					</div>
+					<!--<img class="BrightnessLeft" src="../image/RGB-Saturation02-01.svg" style="margin-top:-40px;"></span>-->
 				</div>
 			</div>
 		</div>
@@ -532,19 +523,6 @@
 				$(".myselfcontent").css("margin-top", "55px");
 				listy = 60;
 			}
-			//			(function(el) {
-			//				if (strDM == 'ios') {
-			//					var strSV = api.systemVersion;
-			//					var numSV = parseInt(strSV, 10);
-			//					var fullScreen = api.fullScreen;
-			//					var iOS7StatusBarAppearance = api.iOS7StatusBarAppearance;
-			//					if (numSV >= 7 && !fullScreen && iOS7StatusBarAppearance) {
-			//						el.style.paddingTop = '20px';
-			//						/* 搜索图标单独处理. */
-			//						//						$api.byId('search-advertise').style.top = "35px";
-			//					}
-			//				}
-			//			})(header);
 			getUserToken();
 			devicelist_getDevList();
 			if (strDM != 'ios') {

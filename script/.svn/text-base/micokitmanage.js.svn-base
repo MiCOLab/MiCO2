@@ -129,14 +129,15 @@ function devicelist_getDevList() {
 				y : listy,
 				cellHeight : 85,
 				cellSelectColor : '#18161d',
+				leftBtn : [{}],
 				rightBtn : [{
 					bg : '#d4257f',
-//					color : '#d4257f',
+					color : '#d4257f',
 					title : '删除',
 					icon : "widget://image/smallicon-8.png"
 				}, {
 					bg : '#d35f84',
-//					color : '#d35f84',
+					color : '#d35f84',
 					title : '修改',
 					icon : "widget://image/smallicon-9.png"
 				}],
@@ -192,7 +193,7 @@ function devicelist_getDevList() {
 			//刷新的小箭头，不可为空
 			var loadingImgae = 'widget://image/jiantou.png';
 			//下拉刷新的背景颜色 ，有默认值，可为空
-			var bgColor = '#F5F5F5';
+			var bgColor = '#18161d';
 			//提示语颜色，有默认值，可为空
 			var textColor = '#8E8E8E';
 			//尚未触发刷新时间的提示语，有默认值，可为空
@@ -266,7 +267,7 @@ function devicelist_getAuthDev() {
 			//刷新的小箭头，不可为空
 			var loadingImgae = 'widget://image/jiantou.png';
 			//刷新的小箭头，不可为空
-			var bgColor = '#F5F5F5';
+			var bgColor = '#18161d';
 			//下拉刷新的背景颜色 ，有默认值，可为空
 			var textColor = '#8E8E8E';
 			//提示语颜色，有默认值，可为空

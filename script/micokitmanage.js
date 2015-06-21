@@ -128,8 +128,8 @@ function devicelist_getDevList() {
 				h : 800,
 				y : listy,
 				cellHeight : 85,
-				bgColor : '#18161d',
 				cellSelectColor : '#18161d',
+				leftBtn : [{}],
 				rightBtn : [{
 					bg : '#d4257f',
 					color : '#d4257f',
@@ -267,7 +267,7 @@ function devicelist_getAuthDev() {
 			//刷新的小箭头，不可为空
 			var loadingImgae = 'widget://image/jiantou.png';
 			//刷新的小箭头，不可为空
-			var bgColor = '#F5F5F5';
+			var bgColor = '#18161d';
 			//下拉刷新的背景颜色 ，有默认值，可为空
 			var textColor = '#8E8E8E';
 			//提示语颜色，有默认值，可为空

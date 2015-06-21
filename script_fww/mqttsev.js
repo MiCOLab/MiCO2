@@ -3,14 +3,13 @@
  */
 
 /*
- *以下是APICloud模块连接的方式
- * */
-var micoMqtt;
+*以下是APICloud模块连接的方式
+* */
 //publish的功能
 function micoPublish(topicStr, payloadStr) {
 	//	apiToast("Publish", 1000);
 
-	//	var micoMqtt = api.require("micoMqtt");
+	var micoMqtt = api.require("micoMqtt");
 	var topic = topicStr;
 	var command = payloadStr;
 	//	apiToast("Publish 01", 1000);
@@ -18,7 +17,7 @@ function micoPublish(topicStr, payloadStr) {
 		topic : topic,
 		command : command
 	}, function(ret, err) {
-		//		apiToast("Publish ret = " + ret.status, 1000);
+		//		apiToast("Publish ret", 1000);
 		if (ret.status) {
 			//			apiToast("Success", 1000);
 		}
@@ -29,14 +28,19 @@ function micoPublish(topicStr, payloadStr) {
 function micoSubscribe(host, username, password, topicStr, clientID) {
 	//	apiToast("Subscribe", 1000);
 
-	micoMqtt = api.require("micoMqtt");
+	var micoMqtt = api.require("micoMqtt");
 	var host = host;
 	var username = username;
 	var password = password;
 	var clientID = clientID;
 	var topic = topicStr;
 	//	apiToast("Subscribe 01", 1000);
-	//	alert("进入Subscribe---> host = " + host + "username " + username + "password " + password + "clientID " + clientID + "topic " + topic)
+	//	alert("host = "+host
+	//	+"username "+username
+	//	+"password "+password
+	//	+"clientID "+clientID
+	//	+"topic "+topic
+	//	)
 	micoMqtt.startMqtt({
 		micoMqtt : micoMqtt,
 		host : host,
@@ -44,17 +48,12 @@ function micoSubscribe(host, username, password, topicStr, clientID) {
 		password : password,
 		clientID : clientID,
 		topic : topic
-	}, function(rets, errs) {
-		//		alert("Subscribe有返回");
-		if (rets.status) {
-			//			apiToast("Subscribe ret = " + JSON.stringify(rets), 1000);
-			micoMqtt.recvMqttMsg(function(retr, errr) {
-				//				apiToast("recvMqttMsg ret = " + JSON.stringify(retr.subs), 1000);
-				//				if(errr){alert("返回错误" + JSON.stringify(errr));}
-				chgtxt(retr.subs);
+	}, function(ret, err) {
+		//		apiToast("Subscribe ret", 1000);
+		if (ret.status) {
+			micoMqtt.recvMqttMsg(function(ret, err) {
+				chgtxt(ret.subs);
 			});
-		} else {
-			//			apiToast("Subscribe err --> " + JSON.stringify(errs), 5000);
 		}
 	});
 }
@@ -69,9 +68,7 @@ function micoSubscribets(host, username, password, topicStr, clientID) {
 function stopMqtt() {
 	//	apiToast("stopMqtt", 1000);
 
-	//	var micoMqtt = api.require("micoMqtt");
-	micoMqtt.stopRecvMqttMsg(function(ret, err) {
-	});
+	var micoMqtt = api.require("micoMqtt");
 	micoMqtt.stopMqtt(function(ret, err) {
 	});
 }

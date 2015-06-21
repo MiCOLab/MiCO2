@@ -47,9 +47,7 @@ $(function() {
 				apiToast(CONFIRM_PHONE, 2000);
 			} else {
 				//按钮变灰不可用，并开启倒计时
-				//				$("#getverifyCode").css("background", "#CCCCCC");
-				$("#getverifyCode").removeClass("sendverify");
-				$("#getverifyCode").addClass("sendverifyhs");
+				$("#getverifyCode").css("background", "#CCCCCC");
 				sendSmsTag = 1;
 				timecd = 60;
 				$mxuser.isExist(phone, function(ret, err) {
@@ -71,9 +69,7 @@ $(function() {
 						}
 						//恢复send按钮的初始状态
 						window.clearInterval(ctrlSendSms);
-						//						$("#getverifyCode").css("background", "#0088CC");
-						$("#getverifyCode").removeClass("sendverifyhs");
-						$("#getverifyCode").addClass("sendverify");
+						$("#getverifyCode").css("background", "#0088CC");
 						$("#sendsmstxt").text("发送");
 						sendSmsTag = 0;
 					}
@@ -475,9 +471,7 @@ function setCountDown() {
 	} else {
 		//恢复send按钮的初始状态
 		window.clearInterval(ctrlSendSms);
-		//		$("#getverifyCode").css("background", "#0088CC");
-		$("#getverifyCode").removeClass("sendverifyhs");
-		$("#getverifyCode").addClass("sendverify");
+		$("#getverifyCode").css("background", "#0088CC");
 		$("#sendsmstxt").text("发送");
 		sendSmsTag = 0;
 	}

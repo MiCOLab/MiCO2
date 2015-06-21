@@ -13,10 +13,16 @@
 		<script type="text/javascript" src="../script/av-0.5.0.min.js"></script>
 		<script type="text/javascript" src="../script/config.js"></script>
 		<script type="text/javascript" src="../script/api.js"></script>
+		<script type="text/javascript" src="../script/mico-bind-0.1.js"></script>
+		<script type="text/javascript" src="../script/micokitmanage.js"></script>
 		<script type="text/javascript" src="../script/mico-user-0.1.js"></script>
 		<script type="text/javascript" src="../script/usermanage.js"></script>
 		<script type="text/javascript" src="../script/msgdic-zh.js"></script>
 		<style>
+			#sendsmstxt {
+				font-size: 15px;
+				color: #5b666c;
+			}
 		</style>
 	</head>
 	<body>
@@ -64,7 +70,7 @@
 					</div>
 				</div>
 				<div class="subbutton" id="nextstep">
-					<span><a href="#nextsteppage" data-transition="none">下一步</a></span>
+					<span><a href="#" data-transition="none">下一步</a></span>
 				</div>
 			</div>
 			<div class="toregistcls">
@@ -88,10 +94,11 @@
 					<input class="styled" type="password" data-theme="f" data-role="none" placeholder="确定密码" id="nextstep_ckpsw"/>
 				</div>
 				<div class="subbutton" id="finishregister">
-					<span><a href="#">注册</a></span>
+					<span><a href="#">完成</a></span>
 				</div>
 			</div>
 		</div>
+		<input id="pswtag" type="hidden" value="0" />
 	</body>
 	<script>
 		//	首页登录样式控制

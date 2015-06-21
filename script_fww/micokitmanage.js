@@ -54,18 +54,6 @@ var rgbreadtag = 1;
 var mqttSign = 0;
 //EasyLink's overtime tag
 var getdevipSign = 0;
-//临时存储wifi名字
-var wifiNameTmp = "";
-//easylinkobj
-var micobindobj;
-//是否显示loading
-var devlisttag;
-//是否显示loading
-var devAuthtag;
-//防止设备离线所定义的全局设备信息标记
-var devinfo;
-//系统版本标记
-var sysverid = 0;
 //界面是否可以touchmove
 var touchmove_listener = function(event) {
 	event.preventDefault();
@@ -74,75 +62,32 @@ var touchmove_listener = function(event) {
 /*
 * 首页列表部分
 */
-/**
- * 0,都不显示
- * 1，显示loading
- * 2、显示刷新
- */
-function showRefreshImg(tag) {
-	if (0 == tag) {
-		$("#devlistlodingid").css("display", "none");
-		$("#devlistshowid").css("display", "none");
-	} else if ((1 == tag) && (0 == devlisttag)) {
-		$("#devlistlodingid").css("display", "block");
-		$("#devlistshowid").css("display", "none");
-	} else if ((2 == tag) && (0 == devlisttag)) {
-		$("#devlistlodingid").css("display", "none");
-		$("#devlistshowid").css("display", "block");
-	}
-}
-
-/**
- * 0,都不显示
- * 1，显示loading
- * 2、显示刷新
- */
-function showAuthRefreshImg(tag) {
-	if (0 == tag) {
-		$("#devAuthlodingid").css("display", "none");
-		$("#devAuthshowid").css("display", "none");
-	} else if ((1 == tag) && (0 == devAuthtag)) {
-		$("#devAuthlodingid").css("display", "block");
-		$("#devAuthshowid").css("display", "none");
-	} else if ((2 == tag) && (0 == devAuthtag)) {
-		$("#devAuthlodingid").css("display", "none");
-		$("#devAuthshowid").css("display", "block");
-	}
-}
-
 //获取账号下所有可以控制的设备
 function devicelist_getDevList() {
 	//	alert("devicelist_getDevList");
 	devlistobj = api.require('listView');
-	devlisttag = 0;
-	showRefreshImg(1);
-	var t = setTimeout("showRefreshImg(2)", 3 * 1000)
-	$mico.getDevList(userToken, function(ret, err, devinfocb) {
+	$mico.getDevList(userToken, function(ret, err, devinfo) {
 		//		alert(JSON.stringify(devinfo));
 		if (ret && (1 == PAGETAG)) {
-			devinfo = devinfocb;
-			devlisttag = 1;
-			showRefreshImg(0);
 			devlistobj.open({
 				//				h : 'auto',
 				h : 800,
+				//				x : 15,
 				y : listy,
-				cellHeight : 75,
+				cellHeight : 85,
+				cellSelectColor: '#18161d',
 				rightBtn : [{
-					bg : '#d4257f',
 					color : '#d4257f',
-					title : '删除',
-					icon : "widget://image/smallicon-8.png"
+					//					backgroundImage:'url(../image/02-zhuye-edit-132-170-2.png)',
+					title : '删除'
 				}, {
-					bg : '#d35f84',
 					color : '#d35f84',
-					title : '修改',
-					icon : "widget://image/smallicon-9.png"
+					title : '修改'
 				}],
-				"borderColor" : "#CCCCCC",
-				"cellBgColor" : "#FCFCFC",
-				imgHeight : '45',
-				imgWidth : '45',
+				"borderColor" : "#18161d",
+				"cellBgColor" : "#222028",
+				imgHeight : '53',
+				imgWidth : '53',
 				data : ret
 			}, function(openret, err) {
 				//openret.index //点击某个cell或其内部按钮返回其下标
@@ -211,9 +156,8 @@ function devicelist_getDevList() {
 				//devicelist_getDevList();
 				//触发加载事件
 				//micokit
-				$mico.getDevList(userToken, function(ret, err, devinforl) {
+				$mico.getDevList(userToken, function(ret, err, devinfo) {
 					if (ret) {
-						devinfo = devinforl;
 						devlistobj.reloadData({
 							data : ret
 						});
@@ -230,21 +174,16 @@ function devicelist_getDevList() {
 function devicelist_getAuthDev() {
 	//			alert("devicelist_getAuthDev");
 	authdevobj = api.require('listView');
-	devAuthtag = 0;
-	showAuthRefreshImg(1);
-	var t = setTimeout("showAuthRefreshImg(2)", 3 * 1000)
 	$mico.getAuthDev(userToken, function(ret, err, devinfo) {
 		if (ret && (8 == PAGETAG)) {
-			devAuthtag = 1;
-			showAuthRefreshImg(0);
 			authdevobj.open({
 				h : 800,
 				y : listy,
-				cellHeight : 75,
-				"borderColor" : "#CCCCCC",
-				"cellBgColor" : "#FCFCFC",
-				imgHeight : '45',
-				imgWidth : '45',
+				cellHeight : 85,
+				"borderColor" : "#18161d",
+				"cellBgColor" : "#222028",
+				imgHeight : '53',
+				imgWidth : '53',
 				data : ret
 			}, function(openret, err) {
 				api.prompt({
@@ -384,7 +323,6 @@ function mqttconnect(deviceid) {
 	app1 = clientID;
 	//	var clientID = deviceid.split("/")[1];
 	//	apiToast(clientID, 2000);
-	//	alert("准备Subscribe");
 	micoSubscribe(host, username, password, deviceid + "/out/#", clientID);
 	sleeprun(deviceid);
 	mqttSign = 1;
@@ -409,8 +347,7 @@ function chgtxt(messageObj) {
 
 function jsontest(strjson) {
 	//传来的是String型的要转成json
-	//	alert(JSON.stringify(strjson));
-	//apiToast("strjson = "+JSON.stringify(strjson), 5000);
+	//			alert(strjson);
 	var jsonstr = strjson;
 	//	var jsonstr = $api.strToJson(strjson);
 	for (var key in jsonstr) {
@@ -424,7 +361,7 @@ function jsontest(strjson) {
 					case RGB_DIC:
 						$("#rgbliid").css("display", "block");
 						//主动读取rgb设备的信息
-						readDevInfo('{"' + RGB_SWI_KEY + '":false,"' + RGB_HUES_KEY + '":0,"' + RGB_SATU_KEY + '":0,"' + RGB_BRIGHT_KEY + '":0}');
+						readDevInfo('{"5":false,"6":0,"7":0,"8":0}');
 						break;
 					case LIGHT_DIC:
 						$("#devdataid").css("display", "block");
@@ -499,25 +436,17 @@ function jsontest(strjson) {
 			} else if (key == RGB_SWI_KEY && (1 == rgbreadtag)) {
 				rgb_switch = jsonstr[key];
 				if (jsonstr[key] == true) {
-					//					$("#rgbonoffbtn").get(0).options[1].selected = true;
-					$("#rgbonoffbtn").attr("src", "../image/switchon.svg");
+					$("#rgbonoffbtn").get(0).options[1].selected = true;
 				} else {
-					//					$("#rgbonoffbtn").get(0).options[0].selected = true;
-					$("#rgbonoffbtn").attr("src", "../image/switchoff.svg");
+					$("#rgbonoffbtn").get(0).options[0].selected = true;
 				}
 			} else if (key == RGB_HUES_KEY && (1 == rgbreadtag)) {
 				rgb_hues = (jsonstr[key] / 360).toFixed(4);
 				setcirclesit(rgb_hues);
 			} else if (key == RGB_SATU_KEY && (1 == rgbreadtag)) {
 				rgb_statu = (jsonstr[key] / 100).toFixed(2);
-				if(ssliderMask){
-					ssliderMask.setValue(rgb_statu, 0, true);
-				}
 			} else if (key == RGB_BRIGHT_KEY && (1 == rgbreadtag)) {
 				rgb_bright = (jsonstr[key] / 100).toFixed(2);
-				if(bsliderMask){
-					bsliderMask.setValue(rgb_bright, 0, true);
-				}
 			} else if (key == MOTOR_KEY) {
 				if ("0" == jsonstr[key]) {
 					$("#motorbtn").attr("src", "../image/smallicon-8kaiguan.png");
@@ -674,16 +603,16 @@ function addchatmsg(msg) {
 * RGB控制部分
 */
 //开关灯按钮
-//function checkrgbbtn() {
-//	var rgbbtn = $("#rgbonoffbtn").find("option:selected").text();
-//	if (rgbbtn == "On") {
-//		dealwithrgbbtn(true);
-//		ctrlrgb();
-//	} else if (rgbbtn == "Off") {
-//		window.clearInterval(rgbctrlinterval);
-//		dealwithrgbbtn(false);
-//	}
-//}
+function checkrgbbtn() {
+	var rgbbtn = $("#rgbonoffbtn").find("option:selected").text();
+	if (rgbbtn == "On") {
+		dealwithrgbbtn(true);
+		ctrlrgb();
+	} else if (rgbbtn == "Off") {
+		window.clearInterval(rgbctrlinterval);
+		dealwithrgbbtn(false);
+	}
+}
 
 //专门服务于开关灯
 function dealwithrgbbtn(ifopen) {
@@ -705,10 +634,6 @@ function getWifiSsid() {
 	wifissid.getSsid(function(ret, err) {
 		if (ret.ssid) {
 			$("#wifi_ssid").val(ret.ssid);
-			if (wifiNameTmp != ret.ssid) {
-				$("#wifi_psw").val("");
-			}
-			wifiNameTmp = ret.ssid;
 		} else {
 			api.alert({
 				msg : err.msg
@@ -719,46 +644,36 @@ function getWifiSsid() {
 
 //获取设备ip
 function getdevip() {
-	//	$("#popupeasy").popup("open");
-	if (api.systemVersion < "4.2") {
-		showProgress(CONNECT_NET, false);
-		//		setTimeout("overTime('getdevipSign',getdevipSign)", 45000);
-		sysverid = 1;
-	} else {
-		setTimeout('$("#popupeasy").popup("open")', 1000);
-	}
+	showProgress(CONNECT_NET, false);
 	//此时正在搜索设备，不允许返回
 	PAGETAG = 100;
 	getdevipSign = 1;
+	setTimeout("overTime('getdevipSign',getdevipSign)", 45000);
 
-	micobindobj = api.require('micoBind');
+	var devipme = api.require('micoBind');
 	var wifi_ssid = $("#wifi_ssid").val();
 	var wifi_psw = $("#wifi_psw").val();
-	micobindobj.getDevip({
+	devipme.getDevip({
 		wifi_ssid : wifi_ssid,
 		wifi_password : wifi_psw
 	}, function(ret, err) {
+		//	alert("ip = "+ret.devip);
 		if (1 == getdevipSign) {
 			getdevipSign = 0;
-			sysverid = 0;
 			if (ret.devip) {
 				dev_token = $.md5(ret.devip + userToken);
 				dev_ip = ret.devip;
+//				changpage("devmanage", "设置设备密码");
 				changpage("devmanage", "设置设备密码");
-				if (1 == sysverid) {
-					hidPro();
-				}
+				hidPro();
 				$("#backleft").css("display", "none");
 			} else {
 				$("#backleft").css("display", "block");
-				if (1 == sysverid) {
-					hidPro();
-				}
+				hidPro();
 				api.alert({
 					msg : err.msg
 				});
 			}
-			$("#popupeasy").popup("close");
 		}
 	});
 }
@@ -847,6 +762,7 @@ function changpage(pageid, titleName) {
 		$("#tohomepage").css("display", "none");
 		$("#tomyself").css("display", "block");
 		$("#toeasylink").css("display", "block");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 		//		$("#headerright").attr("src", "../image/smallicon-4.png");
 		displayalldev();
 	} else if (pageid == "deviceinfo") {
@@ -864,10 +780,12 @@ function changpage(pageid, titleName) {
 		$("#toeasylink").css("display", "none");
 		$(".devctrlrow ul li").css("display", "block");
 	} else if (pageid == "myselfpage") {
+		//渐变（修改成纯色）
 		$("#tomyself").css("display", "none");
 		$("#backleft").css("display", "none");
 		$("#toeasylink").css("display", "none");
 		$("#tohomepage").css("display", "block");
+		$("#header").css("background", "#2addb0");
 		//		$("#headerright").attr("src", "");
 		$("#titleName").html("");
 		$("#mynickname").text(getNickName());
@@ -881,15 +799,19 @@ function changpage(pageid, titleName) {
 	} else if (pageid == "feedbackpage") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	} else if (pageid == "editaccount") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	} else if (pageid == "uphispage") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	} else if (pageid == "authpage") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	}
 	if (titleName != "") {
 		$("#titleName").html(titleName);
@@ -935,27 +857,22 @@ function checkpage() {
 	} else if (PAGETAG == 0) {
 		apiToast(NOT_ALW_RT, 2000);
 	} else if (PAGETAG == 100) {
-		if (1 == sysverid) {
-			hidPro();
-			api.confirm({
-				title : SETTING,
-				msg : WAIT_THIRTY_SEC,
-				buttons : [OK_BTN, CANCEL_BTN]
-			}, function(ret, err) {
-				if (ret.buttonIndex == 1) {
-					//do something 点确定
-					apiToast(GOOD_JOB, 2000);
-					showProgress(CONNECT_NET, true);
-				} else {
-					//		do otherthing 点取消
-					stopEasyLink();
-					apiToast(AGA_T_DEVLIST, 2000);
-					PAGETAG = 5;
-				}
-			});
-		} else {
-			apiToast(CANCLE_FIRST, 2000);
-		}
+		hidPro();
+		api.confirm({
+			title : SETTING,
+			msg : WAIT_THIRTY_SEC,
+			buttons : [OK_BTN, CANCEL_BTN]
+		}, function(ret, err) {
+			if (ret.buttonIndex == 1) {
+				//do something 点确定
+				apiToast(GOOD_JOB, 2000);
+				showProgress(CONNECT_NET, true);
+			} else {
+				//do otherthing 点取消
+				apiToast(AGA_T_DEVLIST, 2000);
+				PAGETAG = 5;
+			}
+		});
 	} else if (PAGETAG == 101) {
 		hidPro();
 		api.confirm({
@@ -1049,7 +966,7 @@ function apiToast(msg, time) {
  */
 function closeApp() {
 	api.closeWidget({
-		id : 'A6985693592474',
+		id : 'A6988773717043',
 		retData : {
 			name : 'closeWidget'
 		},
@@ -1098,7 +1015,6 @@ function overTime(signName, sign) {
 		apiToast(DEV_OFFLINE, 2000);
 	} else if ("getdevipSign" == signName && (1 == getdevipSign)) {
 		hidPro();
-		stopEasyLink();
 		if (100 == PAGETAG) {
 			api.confirm({
 				title : EL_OV,
@@ -1124,13 +1040,6 @@ function addTouchMove() {
 //移除touchmove监听
 function removeTouchMove() {
 	document.body.removeEventListener('touchmove', touchmove_listener, false);
-}
-
-//停止发包
-function stopEasyLink() {
-	micobindobj = api.require('micoBind');
-	micobindobj.stopFtc(function(ret, err) {
-	});
 }
 
 ////编码格式的什么

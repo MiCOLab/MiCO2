@@ -98,7 +98,7 @@ colorPicker.prototype.draw = function(drawHandles) {
 		this.ctx.arc(0, 0, this.scale * 3, 0, 2 * Math.PI, false);
 		this.ctx.closePath();
 		//设置内圈的颜色
-		this.ctx.fillStyle = '#F0F0F0';
+		this.ctx.fillStyle = '#18161d';
 		//		this.ctx.fillStyle = hsl;
 		this.ctx.fill();
 
@@ -260,7 +260,7 @@ function colorPicker(canvas, opts) {
 	var colorPicker = this;
 	//image for the gradient in the center
 	this.clrImg = new Image();
-	this.clrImg.src = opts.image || '../image/RGB_color_BG.png';
+	this.clrImg.src = opts.image || '../image/RGB_color_slider2.png';
 	//store (this) class in variable, so events can use (this) as well
 	//default values, all zero
 	this.h = 0;

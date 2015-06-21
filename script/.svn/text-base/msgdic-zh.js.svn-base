@@ -75,6 +75,9 @@ var NOT_EXIST = "用户不存在";
 //用户已经存在
 var IS_EXIST = "用户已经存在";
 
+//短信发送太频繁
+var SMS_FRE = "太频繁了，短信不要钱啊";
+
 //用户名或者密码不对
 var ID_WRONG = "用户名或者密码不对";
 
@@ -143,6 +146,12 @@ var GOOD_JOB = "棒棒的";
 
 //改好了
 var EDI_SUCCESS  ="哦了";
+
+//网络不好
+var WIFI_EXCEPTION  ="网络不好";
+
+//网络不好
+var CANCLE_FIRST  ="请先停止再返回";
 
 
 

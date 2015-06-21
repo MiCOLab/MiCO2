@@ -64,7 +64,7 @@
 				height: 30px;
 				padding-left: 10px;
 				/*padding-left: 10px;*/
-				width: 100%;
+				/*width: 100%;*/
 				/*border: 1px solid #FFFFFF;*/
 			}
 			.phone {
@@ -75,7 +75,7 @@
 			}
 			.styled {
 				border-bottom: 1px solid #CCCCCC;
-				width: 265px;
+				width: 85%;
 			}
 			.styl {
 				border-bottom: 1px solid #CCCCCC;
@@ -188,7 +188,7 @@
 			.verfication {
 				line-height: 20px;
 			}
-			.ui-grid-b > .ui-block-a {
+			.ui-grid-b .ui-block-a {
 				width: 66%;
 			}
 		</style>
@@ -200,7 +200,7 @@
 			</div>
 			<div class="content">
 				<div class="phone" >
-					<img class="pi"  src="../image/01-LOGIN-touxiang58.svg"/>
+					<div style="float:left;"><img class="pi"  src="../image/01-LOGIN-touxiang58.svg"/></div>
 					<input class="styled" type="number" data-theme="f" data-role="none" placeholder="手机号码" id="login_phone">
 				</div>
 				<div class="psw ">

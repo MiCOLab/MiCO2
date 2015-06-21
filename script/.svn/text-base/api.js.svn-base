@@ -394,9 +394,14 @@
             console.warn('$api.offset Function need el param, el param must be DOM Element');
             return;
         }
-        var sl = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
-        var st = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
-
+        var sl, st;
+        if(document.documentElement){
+            sl = document.documentElement.scrollLeft;
+            st = document.documentElement.scrollTop;
+        }else{
+            sl = document.body.scrollLeft;
+            st = document.body.scrollTop;
+        }
         var rect = el.getBoundingClientRect();
         return {
             l: rect.left + sl,

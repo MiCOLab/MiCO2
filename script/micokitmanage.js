@@ -127,7 +127,9 @@ function devicelist_getDevList() {
 				//				h : 'auto',
 				h : 800,
 				y : listy,
-				cellHeight : 75,
+				cellHeight : 85,
+				bgColor : '#18161d',
+				cellSelectColor : '#18161d',
 				rightBtn : [{
 					bg : '#d4257f',
 					color : '#d4257f',
@@ -139,10 +141,10 @@ function devicelist_getDevList() {
 					title : '修改',
 					icon : "widget://image/smallicon-9.png"
 				}],
-				"borderColor" : "#CCCCCC",
-				"cellBgColor" : "#FCFCFC",
-				imgHeight : '45',
-				imgWidth : '45',
+				"borderColor" : "#18161d",
+				"cellBgColor" : "#222028",
+				imgHeight : '53',
+				imgWidth : '53',
 				data : ret
 			}, function(openret, err) {
 				//openret.index //点击某个cell或其内部按钮返回其下标
@@ -191,7 +193,7 @@ function devicelist_getDevList() {
 			//刷新的小箭头，不可为空
 			var loadingImgae = 'widget://image/jiantou.png';
 			//下拉刷新的背景颜色 ，有默认值，可为空
-			var bgColor = '#F5F5F5';
+			var bgColor = '#18161d';
 			//提示语颜色，有默认值，可为空
 			var textColor = '#8E8E8E';
 			//尚未触发刷新时间的提示语，有默认值，可为空
@@ -240,11 +242,11 @@ function devicelist_getAuthDev() {
 			authdevobj.open({
 				h : 800,
 				y : listy,
-				cellHeight : 75,
-				"borderColor" : "#CCCCCC",
-				"cellBgColor" : "#FCFCFC",
-				imgHeight : '45',
-				imgWidth : '45',
+				cellHeight : 85,
+				"borderColor" : "#18161d",
+				"cellBgColor" : "#222028",
+				imgHeight : '53',
+				imgWidth : '53',
 				data : ret
 			}, function(openret, err) {
 				api.prompt({
@@ -510,12 +512,12 @@ function jsontest(strjson) {
 				setcirclesit(rgb_hues);
 			} else if (key == RGB_SATU_KEY && (1 == rgbreadtag)) {
 				rgb_statu = (jsonstr[key] / 100).toFixed(2);
-				if(ssliderMask){
+				if (ssliderMask) {
 					ssliderMask.setValue(rgb_statu, 0, true);
 				}
 			} else if (key == RGB_BRIGHT_KEY && (1 == rgbreadtag)) {
 				rgb_bright = (jsonstr[key] / 100).toFixed(2);
-				if(bsliderMask){
+				if (bsliderMask) {
 					bsliderMask.setValue(rgb_bright, 0, true);
 				}
 			} else if (key == MOTOR_KEY) {
@@ -868,6 +870,7 @@ function changpage(pageid, titleName) {
 		$("#backleft").css("display", "none");
 		$("#toeasylink").css("display", "none");
 		$("#tohomepage").css("display", "block");
+		$("#header").css("background", "#2addb0");
 		//		$("#headerright").attr("src", "");
 		$("#titleName").html("");
 		$("#mynickname").text(getNickName());
@@ -881,15 +884,19 @@ function changpage(pageid, titleName) {
 	} else if (pageid == "feedbackpage") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	} else if (pageid == "editaccount") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	} else if (pageid == "uphispage") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	} else if (pageid == "authpage") {
 		$("#backleft").css("display", "block");
 		$("#tohomepage").css("display", "none");
+		$("#header").css("background", "-webkit-linear-gradient(#2addb0,#24c5c1)");
 	}
 	if (titleName != "") {
 		$("#titleName").html(titleName);
@@ -1049,7 +1056,7 @@ function apiToast(msg, time) {
  */
 function closeApp() {
 	api.closeWidget({
-		id : 'A6985693592474',
+		id : 'A6988773717043',
 		retData : {
 			name : 'closeWidget'
 		},

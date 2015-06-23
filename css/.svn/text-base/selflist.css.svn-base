@@ -312,7 +312,7 @@
 .subbutton span a {
 	height: 35px;
 	line-height: 35px;
-	color: #17151d;
+	color: #FFFFFF;
 }
 .forgotpsw {
 	text-align: right;
@@ -387,7 +387,7 @@
 }
 
 .myselfrow ul li div a {
-	height: 130PX;
+	/*height: 130PX;*/
 	width: 50%;
 	background-color: #222028;
 	box-sizing: border-box;

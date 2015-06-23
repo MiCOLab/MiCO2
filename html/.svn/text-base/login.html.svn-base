@@ -33,7 +33,7 @@
 			<div class="content">
 				<div class="phone" >
 					<img class="pi"  src="../image/01-LOGIN-touxiang58.svg"/>
-					<input class="styled" type="number" data-theme="f" data-role="none" placeholder="手机号码" id="login_phone">
+					<input class="styled" type="text" data-theme="f" data-role="none" placeholder="手机号码" id="login_phone">
 				</div>
 				<div class="psw ">
 					<img class="pi"  src="../image/01-LOGIN-password58.svg"/>
@@ -60,12 +60,12 @@
 			<div class="content">
 				<div class="phone">
 					<img class="pi"  src="../image/01-LOGIN-touxiang58.svg"/>
-					<input class="styled" type="number" data-theme="f" data-role="none" placeholder="手机号码" id="register_phone">
+					<input class="styled" type="text" data-theme="f" data-role="none" placeholder="手机号码" id="register_phone">
 				</div>
 				<div class="verify">
 					<img class="pi"  src="../image/01-create account-CD58.svg"/>
 					<div class="rightbox">
-						<input class="styl" type="number" data-theme="f" data-role="none" placeholder="请输入手机验证码" id="register_code"/>
+						<input class="styl" type="text" data-theme="f" data-role="none" placeholder="请输入手机验证码" id="register_code"/>
 						<a class="sendverify" id="getverifyCode"><span id="sendsmstxt">发送</span></a>
 					</div>
 				</div>

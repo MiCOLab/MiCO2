@@ -29,14 +29,14 @@
 	cursor: pointer;
 }
 .dragdealer .red-bar {
-	width: 20px;
-	height: 19px;
-	margin-top: 4px;
-	margin-left: 1px;
+	width: 25px;
+	height: 25px;
+	/*margin-top: 4px;*/
+	/*margin-left: 1px;*/
 	/*background-image: url(../image/smallicon-huadonganniu.png);*/
 	background: #F6F6F6;
 	border-radius:45px;
-	border: 1px solid #898989;
+	border: 1px solid #FFFFFF;
 	color: #FFF;
 	font-size: 14px;
 	line-height: 30px;

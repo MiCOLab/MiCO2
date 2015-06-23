@@ -520,18 +520,18 @@
 			$api.fixIos7Bar(header);
 			strDM = api.systemType;
 			if (strDM == 'ios') {
-				$(".header").css("padding-top", "25px");
-				$(".left").css("top", "25px");
+				$(".header").css("padding-top", "30px");
+				$(".left").css("top", "32px");
 				//				$(".center").css("top", "25px");
-				$(".right").css("top", "25px");
-				$(".micocontent").css("margin-top", "55px");
-				$(".myselfcontent").css("margin-top", "55px");
-				listy = 60;
+				$(".right").css("top", "32px");
+				$(".micocontent").css("margin-top", "60px");
+				$(".myselfcontent").css("margin-top", "60px");
+				listy = 67;
 			}
 			getUserToken();
 			devicelist_getDevList();
 			if (strDM != 'ios') {
-				listy = 50;
+				listy = 56;
 				api.addEventListener({
 					name : "keyback"
 				}, function(ret, err) {

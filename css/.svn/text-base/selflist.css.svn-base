@@ -382,7 +382,7 @@
 	text-align: center;
 }
 .myselfrow ul li img {
-	margin-top: 12%;
+	margin-top: 20%;
 	margin-left: 44%;
 }
 
@@ -500,7 +500,7 @@
 	width: 27px;
 }
 .myselflisttitle {
-	padding-top: 5px;
+	padding-top: 7px;
 	height: 36px;
 	line-height: 36px;
 	background-color: #eae9e9;

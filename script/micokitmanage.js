@@ -421,10 +421,10 @@ function jsontest(strjson) {
 				initKey(this.type, this.properties);
 				switch(this.type) {
 					case UARTMSG:
-						$("#chatliid").css("display", "block");
+//						$("#chatliid").css("display", "block");
 						break;
 					case RGB_DIC:
-						$("#rgbliid").css("display", "block");
+//						$("#rgbliid").css("display", "block");
 						//主动读取rgb设备的信息
 						readDevInfo('{"' + RGB_SWI_KEY + '":false,"' + RGB_HUES_KEY + '":0,"' + RGB_SATU_KEY + '":0,"' + RGB_BRIGHT_KEY + '":0}');
 						break;
@@ -512,16 +512,14 @@ function jsontest(strjson) {
 				setcirclesit(rgb_hues);
 			} else if (key == RGB_SATU_KEY && (1 == rgbreadtag)) {
 				rgb_statu = (jsonstr[key] / 100).toFixed(2);
-				$("#rgb_statu_id").val(rgb_statu);
-				//				if (ssliderMask) {
-				//					ssliderMask.setValue(rgb_statu, 0, true);
-				//				}
+				if (ssliderMask) {
+					ssliderMask.setValue(rgb_statu, 0, true);
+				}
 			} else if (key == RGB_BRIGHT_KEY && (1 == rgbreadtag)) {
 				rgb_bright = (jsonstr[key] / 100).toFixed(2);
-				$("#rgb_bright_id").val(rgb_bright);
-				//				if (bsliderMask) {
-				//					bsliderMask.setValue(rgb_bright, 0, true);
-				//				}
+				if (bsliderMask) {
+					bsliderMask.setValue(rgb_bright, 0, true);
+				}
 			} else if (key == MOTOR_KEY) {
 				if ("0" == jsonstr[key]) {
 					$("#motorbtn").attr("src", "../image/smallicon-8kaiguan.png");
@@ -693,8 +691,8 @@ function addchatmsg(msg) {
 function dealwithrgbbtn(ifopen) {
 	var color = colorPicker.getColorHSV();
 	var colorcode = parseInt(color.h * 360);
-	var brightcode = $('#rgb_bright_id').val();
-	var satcode = $('#rgb_statu_id').val();
+	var brightcode = $('#brightspanid').val();
+	var satcode = $('#satspanid').val();
 	var rgbcode = '{"' + RGB_SWI_KEY + '":' + ifopen + ',"' + RGB_HUES_KEY + '":' + colorcode + ',"' + RGB_SATU_KEY + '":' + satcode + ',"' + RGB_BRIGHT_KEY + '":' + brightcode + '}';
 	micoPublish(DEVID_GLOBAL + "/in/write/" + app1, rgbcode);
 }

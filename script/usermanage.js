@@ -328,7 +328,7 @@ function getEmail() {
 			return email;
 		}
 	} else {
-		return "NotSet";
+		return "未设置";
 	}
 }
 

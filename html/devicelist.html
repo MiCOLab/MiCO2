@@ -90,8 +90,6 @@
 			.p img {
 				width: 75px;
 				margin-top: 17.5px;
-				/*margin: 0 auto;*/
-				/*height: 90px;*/
 			}
 			.p {
 				text-align: center;
@@ -118,21 +116,10 @@
 			}
 			.lcop {
 				color: #00EEEE;
-				margin-right: 15px;
+				margin-right: 16px;
 				float: right;
 				font-size: 15px;
 				font-family: arial;
-			}
-			.UartTU {
-				/*margin-left: 20%;*/
-				/*margin-right: 80%*/
-				/*margin-right: 76px;*/
-				/*vertical-align: middle;*/
-			}
-			.RGBTU {
-				/*margin-left: 76px;*/
-				/*margin-right: 90%*/
-				/*vertical-align: middle;*/
 			}
 			#rgbonoffbtn {
 				position: absolute;
@@ -150,6 +137,23 @@
 				margin-top: -20px;
 				float: left;
 			}
+			.easysearchcls {
+				display: block;
+				width: 100%;
+			}
+			.stopacls {
+				display: block;
+				width: 100%;
+			}
+			#stopelbtn {
+				margin-top: 0px;
+				background-image: url();
+				background-color: #EFEFEF;
+				border-radius: 0px;
+			}
+			#stopelbtn a span {
+				color: #105284;
+			}
 		</style>
 	</head>
 	<body>
@@ -159,7 +163,7 @@
 			<a class="left" id="tomyself"><img src="../image/smallicon-3.png" alt=""/></a>
 			<span class="center" id="titleName">MiCOKit</span>
 			<a class="right" id="toeasylink"><img src="../image/smallicon-4.png" alt=""/></a>
-			<a class="right" id="tohomepage"><img src="../image/smallicon-3.png" alt=""/></a>
+			<a class="right" id="tohomepage"><img src="../image/smallicon-3r.png" alt=""/></a>
 		</header>
 		<!--设备详情-->
 		<div class="micocontent" data-role="page" id="homePage">
@@ -387,7 +391,7 @@
 					<input type="text" data-theme="f" data-role="none"  placeholder="请输入Wi-Fi密码" id="wifi_psw"/>
 				</div>
 				<div class="subbutton" onclick="getdevip()" id="sousuoid">
-					<a class="easysearchcls" href="#" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false"><span>搜索 </span></a>
+					<a class="easysearchcls" href="#popupeasy" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false"><span>搜索 </span></a>
 				</div>
 			</div>
 		</div>
@@ -478,20 +482,20 @@
 				<ul>
 					<li class="myselfrowedp"></li>
 					<li class="myselfrowed myselflistclsed" id="nickclsid">
-						<img class="pitu"  src="../image/03my account-gender45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">昵称</span>
+						<img class="pitu"  src="../image/03my account-gender45.svg"/><span class="fontcolor">昵称</span>
 						<div class="lcop" id="nicknameid">
-							lcopen
+							未登录
 						</div>
 					</li>
 					<li class="myselfrowed myselflistclsed" id="emailclsid">
-						<img class="pitu"  src="../image/03my account-email45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">Email</span>
-						<div class="devdetail" id="emailid">
+						<img class="pitu"  src="../image/03my account-email45.svg"/><span class="fontcolor">Email</span>
+						<div class="lcop" id="emailid">
 							未设置
 						</div>
 					</li>
 					<li class="myselfrowedp"></li>
 					<li class="myselfrowed myselflistclsed" id="pswclsid">
-						<img class="pitu"  src="../image/03my account-key45.svg"/>&nbsp;&nbsp;&nbsp; <span class="fontcolor">修改密码</span>
+						<img class="pitu"  src="../image/03my account-key45.svg"/><span class="fontcolor">修改密码</span>
 					</li>
 					<li class="bk"></li>
 					<li class="banked" id="logout">
@@ -506,7 +510,11 @@
 	<script type="text/javascript" src="../script/colorPicker.js"></script>
 	<script type="text/javascript">
 		//		给pop加载的时候用
-		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' + '<img style="width:250px;" src="../image/easylink.gif"/>' + '<div class="subbutton" id="stopelbtn">' + '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' + '</div>' + '</div>');
+		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' 
+						+ '<img style="width:250px;" src="../image/easylink.gif"/>' 
+						+ '<div class="subbutton" id="stopelbtn">' 
+						+ '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' 
+						+ '</div>' + '</div>');
 		$jqelpop.appendTo($("#sousuoid")).popup();
 		var strDM;
 		apiready = function() {

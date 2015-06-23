@@ -249,20 +249,24 @@ function devicelist_getAuthDev() {
 				imgWidth : '53',
 				data : ret
 			}, function(openret, err) {
-				api.prompt({
-					title : GIVE_AUTH,
-					msg : ENTER_PHONE,
-					buttons : [OK_BTN, CANCEL_BTN]
-				}, function(ret, err) {
-					if (ret.buttonIndex == 1) {
-						var phone = ret.text;
-						if (true != isphone2(phone)) {
-							apiToast(CONFIRM_PHONE, 1000);
-						} else {
-							remoteAuthdev(devinfo.devId[openret.index], phone);
+				var clickIndex = openret.index;
+				//整行选择
+				if (clickIndex >= 0) {
+					api.prompt({
+						title : GIVE_AUTH,
+						msg : ENTER_PHONE,
+						buttons : [OK_BTN, CANCEL_BTN]
+					}, function(ret, err) {
+						if (ret.buttonIndex == 1) {
+							var phone = ret.text;
+							if (true != isphone2(phone)) {
+								apiToast(CONFIRM_PHONE, 1000);
+							} else {
+								remoteAuthdev(devinfo.devId[clickIndex], phone);
+							}
 						}
-					}
-				});
+					});
+				}
 			});
 			//刷新的小箭头，不可为空
 			var loadingImgae = 'widget://image/jiantou.png';
@@ -421,10 +425,10 @@ function jsontest(strjson) {
 				initKey(this.type, this.properties);
 				switch(this.type) {
 					case UARTMSG:
-//						$("#chatliid").css("display", "block");
+						//						$("#chatliid").css("display", "block");
 						break;
 					case RGB_DIC:
-//						$("#rgbliid").css("display", "block");
+						//						$("#rgbliid").css("display", "block");
 						//主动读取rgb设备的信息
 						readDevInfo('{"' + RGB_SWI_KEY + '":false,"' + RGB_HUES_KEY + '":0,"' + RGB_SATU_KEY + '":0,"' + RGB_BRIGHT_KEY + '":0}');
 						break;
@@ -832,7 +836,8 @@ function readHisFile(filepath, showid) {
 	}, function(ret, err) {
 		if (ret.status) {
 			var data = ret.data;
-			showid.html(data);
+			//			data = '<span>' + data + '</span>'
+			showid.html('<span>' + data + '</span>');
 		}
 	});
 }

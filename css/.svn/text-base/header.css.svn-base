@@ -15,7 +15,7 @@
 	position: absolute;
 	top: 15px;
 	height: 20px;
-	left: 16px;
+	/*left: 16px;*/
 }
 .center {
 	/*padding-left: 18px;*/
@@ -32,7 +32,7 @@
 	position: absolute;
 	top: 15px;
 	height: 20px;
-	right: 16px;
+	right: 0px;
 }
 .right img {
 	height: 20px;

@@ -53,7 +53,14 @@ $(function() {
 				sendSmsTag = 1;
 				timecd = 60;
 				$mxuser.isExist(phone, function(ret, err) {
-					if (((0 == pswtag) && (0 < ret)) || ((1 == pswtag) && (0 == ret))) {
+					var ifreg_suc, length = ret.length;
+					if (1 == length) {
+						//看看userToken是否已经存在
+						ifreg_suc = ret[0].get("userToken");
+					}
+					//如果是找回验证码pswtag=0：判断是否有此用户length，此用户是否有userToken
+					//如果是注册pswtag=1：判断此用户是否已经注册length，此用户是否有userToken
+					if (((0 == pswtag) && (0 < length) && ("undefined" != typeof (ifreg_suc))) || ((1 == pswtag) && (0 == length)) || ((1 == pswtag) && ("undefined" == typeof (ifreg_suc)))) {
 						$mxuser.getSmsCode(phone, function(ret) {
 							hidPro();
 							//发送成功

@@ -227,7 +227,7 @@
 		query.equalTo("username", username);
 		query.find({
 			success : function(ret) {
-				callback(ret.length, errm);
+				callback(ret, errm);
 			},
 			error : function(err) {
 				callback(sucm, err);

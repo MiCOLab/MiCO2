@@ -45,6 +45,7 @@ ret：
 	"deviceName":""		//设备名称
 	"deviceMac":""	//设备的MAC地址
 	"deviceIP":""	//设备的IP
+	"deviceMacbind":""	//设备是否已经激活,返回0，true，或者false
 }
 ```
 

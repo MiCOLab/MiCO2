@@ -549,3 +549,22 @@
 	font-size: 15px;
 	font-family: Arial
 }
+.mdnsdevlistcls{
+	/*padding: 10px 49px;*/
+}
+.mdnsdevlistcls ul li{
+	color: #FFFFFF;
+}
+.mdnsdevcls{
+	height: 85px;
+	line-height: 85px;
+	background-color: #222028;
+	margin-bottom: 2px;
+}
+.mdnsdevcls a img{
+	height: 53px;
+	margin: 16px 0px 16px 16px;
+}
+.mdnsdevcls a span{
+	margin: 16px 0px 16px 16px;
+}

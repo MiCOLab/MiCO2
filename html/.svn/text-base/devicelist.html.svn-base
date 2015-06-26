@@ -391,6 +391,14 @@
 					<a class="easysearchcls" href="#" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false"><span>搜索 </span></a>
 				</div>
 			</div>
+			<div>
+				<div class="mdnsdevlistcls">
+					<ul id="mdnsdevliid" onclick="getmDNSlist()">
+						<li>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 		<!--EasyLink密码配置-->
 		<div class="micocontent" data-role="page" id="devmanage">
@@ -507,11 +515,7 @@
 	<script type="text/javascript" src="../script/colorPicker.js"></script>
 	<script type="text/javascript">
 		//		给pop加载的时候用
-		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' 
-						+ '<img style="width:250px;" src="../image/easylink.gif"/>' 
-						+ '<div class="subbutton" id="stopelbtn">' 
-						+ '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' 
-						+ '</div>' + '</div>');
+		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' + '<img style="width:250px;" src="../image/easylink.gif"/>' + '<div class="subbutton" id="stopelbtn">' + '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' + '</div>' + '</div>');
 		$jqelpop.appendTo($("#sousuoid")).popup();
 		var strDM;
 		apiready = function() {
@@ -553,6 +557,7 @@
 			PAGETAG = 5;
 			//获取ssid
 			getWifiSsid();
+			getmDNSlist();
 		});
 		//设备列表刷新
 		$("#devlistshowid").click(function() {

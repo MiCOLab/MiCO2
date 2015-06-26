@@ -750,7 +750,7 @@ function getdevip() {
 			if (ret.devip) {
 				dev_token = $.md5(ret.devip + userToken);
 				dev_ip = ret.devip;
-				changpage("devmanage", "设置设备密码");
+//				changpage("devmanage", "设置设备密码");
 				if (1 == sysverid) {
 					hidPro();
 				}
@@ -1142,6 +1142,51 @@ function removeTouchMove() {
 function stopEasyLink() {
 	micobindobj = api.require('micoBind');
 	micobindobj.stopFtc(function(ret, err) {
+	});
+}
+
+//获取mdns设备列表
+function getmDNSlist() {
+	alert("oldstartMdns");
+	var micoMmdns = api.require("micoMdns");
+	var serviceType = "_easylink._tcp";
+	var inDomain = "local";
+	micoMmdns.startMdns({
+		serviceType : serviceType,
+		inDomain : inDomain
+	}, function(ret, err) {
+		var html = "";
+		if (ret.status) {
+			$.each(ret.status, function(n, value) {
+				if (("false" == value.deviceMacbind)) {
+					html += "<li>" + value.deviceName + " " + value.deviceMac + "<br/>  " + value.deviceMacbind + " " + value.deviceIP + "</li>";
+				}
+			});
+			$("#mdnsdevliid").html(html);
+		}
+	});
+
+	//
+	//	alert("getmDNSlist");
+	//	var html = "";
+	//	var micoMdns = api.require("micoMdns");
+	//	alert("micoMdns = "+micoMdns);
+	//	var serviceType = "_easylink._tcp";
+	//	var inDomain = "local";
+	//	micoMmdns.startMdns({
+	//		serviceType : serviceType,
+	//		inDomain : inDomain
+	//	}, function(ret, err) {
+	//		alert(JSON.stringify(ret));
+	//		$.each(ret.status, function(n, value) {
+	//			html += "<li>" + value.deviceMac + " " + value.deviceMacbind + " " + value.deviceIP + "</li>";
+	//			$("#mdnsdevliid").text(html);
+	//		});
+	//	});
+}
+
+function stopMdns() {
+	micoMmdns.stopMdns(function(ret, err) {
 	});
 }
 

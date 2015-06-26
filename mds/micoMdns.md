@@ -69,11 +69,10 @@ var serviceInfo = "_easylink._tcp.local.";
 micoMmdns.startMdns({
 	serviceInfo : serviceInfo
 }, function(ret, err){
-	if(ret.deviceMac){
-		api.alert({msg:ret.deviceMac});
-	}else{
-		api.alert({msg:err.msg});
-    }
+	$.each(ret.status, function(n, value) {
+		var trs = value.deviceMac + " " + value.deviceMacbind + " " + value.deviceIP + "<br/>";
+		$("#messEdits").prepend(trs);
+	});
 });
 ```
 

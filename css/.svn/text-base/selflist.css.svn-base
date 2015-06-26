@@ -549,3 +549,9 @@
 	font-size: 15px;
 	font-family: Arial
 }
+.mdnsdevlistcls{
+	padding: 10px 49px;
+}
+.mdnsdevlistcls ul li{
+	color: #FFFFFF;
+}

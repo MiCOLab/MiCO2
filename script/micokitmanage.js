@@ -66,6 +66,8 @@ var devAuthtag;
 var devinfo;
 //系统版本标记
 var sysverid = 0;
+//mdns的对象
+var micoMmdns;
 //界面是否可以touchmove
 var touchmove_listener = function(event) {
 	event.preventDefault();
@@ -750,7 +752,7 @@ function getdevip() {
 			if (ret.devip) {
 				dev_token = $.md5(ret.devip + userToken);
 				dev_ip = ret.devip;
-				changpage("devmanage", "设置设备密码");
+				//				changpage("devmanage", "设置设备密码");
 				if (1 == sysverid) {
 					hidPro();
 				}
@@ -1028,6 +1030,7 @@ function uartctrltoinfo() {
 }
 
 function easylinktoList() {
+	stopMdns();
 	//页面跳转
 	changpage("homePage", "MiCOKit");
 	//	刷新内容
@@ -1142,6 +1145,34 @@ function removeTouchMove() {
 function stopEasyLink() {
 	micobindobj = api.require('micoBind');
 	micobindobj.stopFtc(function(ret, err) {
+	});
+}
+
+//获取mdns设备列表
+function getmDNSlist() {
+	alert("oldstartMdns");
+	micoMmdns = api.require("micoMdns");
+	var serviceType = "_easylink._tcp";
+	var inDomain = "local";
+	micoMmdns.startMdns({
+		serviceType : serviceType,
+		inDomain : inDomain
+	}, function(ret, err) {
+		var html = "";
+		if (ret.status) {
+			$.each(ret.status, function(n, value) {
+				if (("false" == value.deviceMacbind)) {
+					html += "<li>" + value.deviceName + " " + value.deviceMac + "<br/>  " + value.deviceMacbind + " " + value.deviceIP + "</li>";
+				}
+			});
+			$("#mdnsdevliid").html(html);
+		}
+	});
+}
+
+//停止扫描
+function stopMdns() {
+	micoMmdns.stopMdns(function(ret, err) {
 	});
 }
 

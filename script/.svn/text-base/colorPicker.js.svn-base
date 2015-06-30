@@ -260,7 +260,7 @@ function colorPicker(canvas, opts) {
 	var colorPicker = this;
 	//image for the gradient in the center
 	this.clrImg = new Image();
-	this.clrImg.src = opts.image || '../image/RGB_color_slider2.png';
+	this.clrImg.src = opts.image || '../image/RGB_color.png';
 	//store (this) class in variable, so events can use (this) as well
 	//default values, all zero
 	this.h = 0;

@@ -36,8 +36,8 @@
 						if (this.online == "1") {
 							imgPath = "widget://image/devimg" + ((i++) % 5 + 1) + ".png";
 							devName = this.alias;
-							titleColor = "#1c6ac6";
-							subTitleColor = "#895b5b";
+							titleColor = "#24C5C1";
+							subTitleColor = "#4A494D";
 						} else {
 							imgPath = "widget://image/devoffline.png";
 							devName = this.alias;
@@ -107,8 +107,8 @@
 							"titleSize" : "15",
 							//"subTitle" : "MAC:" + this.bssid + "\r\nIP:" + this.ip
 							"subTitle" : "MAC:" + this.bssid + " (IP:" + this.ip + ")",
-							"titleColor" : "#00a29a",
-							"subTitleColor" : "#895b5b"
+							"titleColor" : "#24C5C1",
+							"subTitleColor" : "#4A494D"
 						};
 						devinfo.devId.push(this.id);
 						arrayObj.push(alias);

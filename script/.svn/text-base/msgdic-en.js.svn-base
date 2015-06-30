@@ -147,6 +147,8 @@ var GOOD_JOB ="Good job"
 //改好了
 var EDI_SUCCESS  ="success";
 
+//激活成功
+var ACTIVATE_SUCC  ="Activate Success";
 
 
 

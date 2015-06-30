@@ -752,11 +752,11 @@ function getdevip() {
 			if (ret.devip) {
 				dev_token = $.md5(ret.devip + userToken);
 				dev_ip = ret.devip;
-				//				changpage("devmanage", "设置设备密码");
+				//changpage("devmanage", "设置设备密码");
 				if (1 == sysverid) {
 					hidPro();
 				}
-				$("#backleft").css("display", "none");
+				//				$("#backleft").css("display", "none");
 			} else {
 				$("#backleft").css("display", "block");
 				if (1 == sysverid) {
@@ -767,18 +767,22 @@ function getdevip() {
 				});
 			}
 			$("#popupeasy").popup("close");
+			PAGETAG = 5;
 		}
 	});
 }
 
 //获取deviceid
-function ajaxgetdveid() {
+function ajaxgetdveid(devip) {
+	alert(devip);
 	showProgress(SET_DEV_PSW, true);
 	//此时正在搜索设备，不允许返回
 	PAGETAG = 101;
-	var dev_psw = $("#dev_psw").val();
+	//	var dev_psw = $("#dev_psw").val();
+	var dev_token = $.md5(devip + userToken);
+	var dev_psw = "1234";
 	if (dev_psw != "" && isNum(dev_psw)) {
-		$mico.getDevid(dev_ip, dev_psw, dev_token, function(ret, err) {
+		$mico.getDevid(devip, dev_psw, dev_token, function(ret, err) {
 			if (ret) {
 				var devid = ret.device_id;
 				bindtocloud(devid);
@@ -801,7 +805,8 @@ function bindtocloud(devid) {
 	$mico.bindDevCloud(APP_ID, userToken, dev_token, function(ret, err) {
 		if (ret) {
 			//页面跳转
-			changpage("homePage", "MiCOKit");
+			//			changpage("homePage", "MiCOKit");
+			apiToast(ACTIVATE_SUCC, 2000);
 			hidPro();
 			//	刷新内容
 			devicelist_getDevList();
@@ -1031,6 +1036,7 @@ function uartctrltoinfo() {
 
 function easylinktoList() {
 	stopMdns();
+	$(".mdnsdjhsb").css("display", "none");
 	//页面跳转
 	changpage("homePage", "MiCOKit");
 	//	刷新内容
@@ -1150,7 +1156,7 @@ function stopEasyLink() {
 
 //获取mdns设备列表
 function getmDNSlist() {
-	alert("oldstartMdns");
+	//	alert("oldstartMdns");
 	micoMmdns = api.require("micoMdns");
 	var serviceType = "_easylink._tcp";
 	var inDomain = "local";
@@ -1159,12 +1165,17 @@ function getmDNSlist() {
 		inDomain : inDomain
 	}, function(ret, err) {
 		var html = "";
+		var sbtag = 0;
 		if (ret.status) {
 			$.each(ret.status, function(n, value) {
 				if (("false" == value.deviceMacbind)) {
-					html += "<li>" + value.deviceName + " " + value.deviceMac + "<br/>  " + value.deviceMacbind + " " + value.deviceIP + "</li>";
+					sbtag = 1;
+					html += '<li class="mdnsdevcls" onclick="ajaxgetdveid(\'' + value.deviceIP + '\')"><a><img src="../image/weijihuo.png"/><div><p class="mdnsdjhsbname">' + value.deviceName + '</p><p class="mdnsdjhsbip">' + value.deviceIP + '</p></div></a></li>';
 				}
 			});
+			if (1 == sbtag) {
+				$(".mdnsdjhsb").css("display", "block");
+			}
 			$("#mdnsdevliid").html(html);
 		}
 	});

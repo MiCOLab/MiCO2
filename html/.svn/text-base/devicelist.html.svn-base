@@ -392,12 +392,12 @@
 				</div>
 			</div>
 			<div>
-				<div class="mdnsdevlistcls">
-					<ul id="mdnsdevliid" onclick="getmDNSlist()">
-						<li>
-						</li>
-					</ul>
-				</div>
+			<div class="mdnsdevlistcls">
+				<ul class="mdnsdjhsb">待激活设备</ul>
+				<ul id="mdnsdevliid">
+					<li class="mdnsdevcls" onclick="ajaxgetdveid('adasdasdas')"><a><img src="../image/weijihuo.png"/><div><p class="mdnsdjhsbname">MK3288</p><p class="mdnsdjhsbip">192.168.1.23()</p></div></a></li>
+				</ul>
+			</div>
 			</div>
 		</div>
 		<!--EasyLink密码配置-->

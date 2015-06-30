@@ -47,7 +47,7 @@
 	background: #222028;
 }
 
-.devctrlrowed .devinfoclsed div a{
+.devctrlrowed .devinfoclsed div a {
 	width: 45%;
 }
 
@@ -242,7 +242,7 @@
 	margin-top: 16px;
 	padding-left: 20px;
 }
-.phoned input{
+.phoned input {
 	color: #FFFFFF;
 	height: 35px;
 	line-height: 35px;
@@ -253,7 +253,7 @@
 	margin-top: 16px;
 	padding-left: 20px;
 }
-.pswed input{
+.pswed input {
 	height: 35px;
 	line-height: 35px;
 	color: #FFFFFF;
@@ -538,7 +538,7 @@
 	font-family: arial;
 	color: #2981c5;
 }
-.fdcontent span{
+.fdcontent span {
 	color: #2981c5;
 }
 
@@ -549,22 +549,40 @@
 	font-size: 15px;
 	font-family: Arial
 }
-.mdnsdevlistcls{
+.mdnsdevlistcls {
 	/*padding: 10px 49px;*/
 }
-.mdnsdevlistcls ul li{
+.mdnsdevlistcls ul li {
 	color: #FFFFFF;
 }
-.mdnsdevcls{
+.mdnsdevcls {
 	height: 85px;
-	line-height: 85px;
 	background-color: #222028;
 	margin-bottom: 2px;
 }
-.mdnsdevcls a img{
+.mdnsdevcls a img {
 	height: 53px;
 	margin: 16px 0px 16px 16px;
 }
-.mdnsdevcls a span{
-	margin: 16px 0px 16px 16px;
+.mdnsdevcls a div {
+	display: inline;
+	float: right;
+	margin: 25px 0px 16px 16px;
+}
+.mdnsdjhsb {
+	background-color: rgb(46, 44, 54);
+	color: rgb(36, 197, 193);
+	padding: 10px 16px;
+	font-size: 13px;
+	margin:10px 0px 2px 0px;
+	display: none;
+}
+.mdnsdjhsbname {
+	color: #24C5C1;
+	font-size: 15px;
+}
+.mdnsdjhsbip {
+	color: #4A494D;
+	font-size: 13px;
+	font-weight: normal;
 }

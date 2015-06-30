@@ -153,6 +153,9 @@ var WIFI_EXCEPTION  ="网络不好";
 //网络不好
 var CANCLE_FIRST  ="请先停止再返回";
 
+//激活成功
+var ACTIVATE_SUCC  ="激活成功";
+
 
 
 

@@ -384,7 +384,7 @@ function deleteDevName(devid, indexNo) {
 function mqttconnect(deviceid) {
 	showProgress(GETDEVINFO, false);
 	DEVID_GLOBAL = deviceid;
-	var host = "http://api.easylink.io";
+	var host = "api.easylink.io";
 	var username = userToken;
 	var password = "";
 	var clientID = VISION_INDEX + "-app-" + api.deviceId.substring(0, 12);
@@ -774,30 +774,40 @@ function getdevip() {
 
 //获取deviceid
 function ajaxgetdveid(devip) {
-	alert(devip);
-	showProgress(SET_DEV_PSW, true);
-	//此时正在搜索设备，不允许返回
-	PAGETAG = 101;
-	//	var dev_psw = $("#dev_psw").val();
-	var dev_token = $.md5(devip + userToken);
-	var dev_psw = "1234";
-	if (dev_psw != "" && isNum(dev_psw)) {
-		$mico.getDevid(devip, dev_psw, dev_token, function(ret, err) {
-			if (ret) {
-				var devid = ret.device_id;
-				bindtocloud(devid);
+	//	alert(devip);
+	api.confirm({
+		title : ACTIVATE_DEV,
+		msg : SURE_ACTIV_DEV,
+		buttons : [OK_BTN, CANCEL_BTN]
+	}, function(ret, err) {
+		if (ret.buttonIndex == 1) {
+			showProgress(SET_DEV_PSW, true);
+			//此时正在搜索设备，不允许返回
+			//	PAGETAG = 101;
+			//	var dev_psw = $("#dev_psw").val();
+			dev_token = $.md5(devip + userToken);
+			var dev_psw = "1234";
+			if (dev_psw != "" && isNum(dev_psw)) {
+				//		alert("devip = " + devip + " psw = " + dev_psw + " dev_token = " + dev_token);
+				$mico.getDevid(devip, dev_psw, dev_token, function(ret, err) {
+					if (ret) {
+						var devid = ret.device_id;
+						bindtocloud(devid);
+					} else {
+						$("#backleft").css("display", "block");
+						hidPro();
+						apiToast(W_AND_TRY, 2000);
+						//				alert(JSON.stringify(err));
+					}
+				});
 			} else {
 				$("#backleft").css("display", "block");
 				hidPro();
-				apiToast(W_AND_TRY, 2000);
-				//				alert(JSON.stringify(err));
+				apiToast(PSW_M_DIG, 2000);
 			}
-		});
-	} else {
-		$("#backleft").css("display", "block");
-		hidPro();
-		apiToast(PSW_M_DIG, 2000);
-	}
+		}
+	});
+
 }
 
 //去云端绑定设备
@@ -975,23 +985,23 @@ function checkpage() {
 		} else {
 			apiToast(CANCLE_FIRST, 2000);
 		}
-	} else if (PAGETAG == 101) {
-		hidPro();
-		api.confirm({
-			title : SETTING,
-			msg : WAIT_TEN_SEC,
-			buttons : [OK_BTN, CANCEL_BTN]
-		}, function(ret, err) {
-			if (ret.buttonIndex == 1) {
-				//do something 点确定
-				apiToast(GOOD_JOB, 2000);
-				showProgress(SET_DEV_PSW, true);
-			} else {
-				//do otherthing 点取消
-				apiToast(AGA_T_DEVLIST, 2000);
-				PAGETAG = 5;
-			}
-		});
+		//	} else if (PAGETAG == 101) {
+		//		hidPro();
+		//		api.confirm({
+		//			title : SETTING,
+		//			msg : WAIT_TEN_SEC,
+		//			buttons : [OK_BTN, CANCEL_BTN]
+		//		}, function(ret, err) {
+		//			if (ret.buttonIndex == 1) {
+		//				//do something 点确定
+		//				apiToast(GOOD_JOB, 2000);
+		//				showProgress(SET_DEV_PSW, true);
+		//			} else {
+		//				//do otherthing 点取消
+		//				apiToast(AGA_T_DEVLIST, 2000);
+		//				PAGETAG = 5;
+		//			}
+		//		});
 	}
 }
 

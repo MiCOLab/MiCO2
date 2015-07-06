@@ -388,7 +388,7 @@
 					<input type="text" data-theme="f" data-role="none"  placeholder="请输入Wi-Fi密码" id="wifi_psw"/>
 				</div>
 				<div class="subbutton" onclick="getdevip()" id="sousuoid">
-					<a class="easysearchcls" href="#" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false"><span>搜索 </span></a>
+					<span><a class="easysearchcls" href="#" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false">搜索 </a></span>
 				</div>
 			</div>
 			<div>

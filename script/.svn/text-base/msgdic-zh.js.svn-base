@@ -24,8 +24,8 @@ var CONFIRM_PHONE = "请确认手机号";
 var CONFIRM_EMAIL = "请确认邮箱";
 
 //确定，取消
-var OK_BTN = "确定";
-var CANCEL_BTN = "取消";
+var OK_BTN = "接受";
+var CANCEL_BTN = "拒绝";
 
 //下来刷新
 var PULL_DOWN = "下拉刷新";
@@ -46,7 +46,7 @@ var R_U_SURE = "这样真的好吗";
 var CONNECT_NET = "配网中，此过程大约需要10-20秒";
 
 //设置设备密码
-var SET_DEV_PSW = "设置设备密码";
+var SET_DEV_PSW = "激活中...";
 
 //设备密码必须是数字
 var PSW_M_DIG = "设备密码要是数字呢";
@@ -155,6 +155,12 @@ var CANCLE_FIRST  ="请先停止再返回";
 
 //激活成功
 var ACTIVATE_SUCC  ="激活成功";
+
+//激活设备
+var ACTIVATE_DEV  ="唤醒我？";
+
+//真的要激活设备
+var SURE_ACTIV_DEV  ="那么，我就是你的人了";
 
 
 

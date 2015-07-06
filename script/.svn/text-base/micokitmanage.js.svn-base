@@ -68,6 +68,8 @@ var devinfo;
 var sysverid = 0;
 //mdns的对象
 var micoMmdns;
+//是否提示找到设备
+var saytag = 0;
 //界面是否可以touchmove
 var touchmove_listener = function(event) {
 	event.preventDefault();
@@ -1170,6 +1172,7 @@ function getmDNSlist() {
 	micoMmdns = api.require("micoMdns");
 	var serviceType = "_easylink._tcp";
 	var inDomain = "local";
+	saytag = 0;
 	micoMmdns.startMdns({
 		serviceType : serviceType,
 		inDomain : inDomain
@@ -1185,10 +1188,22 @@ function getmDNSlist() {
 			});
 			if (1 == sbtag) {
 				$(".mdnsdjhsb").css("display", "block");
+				if (0 == saytag) {
+					saytag = 1;
+					findUnactiDev();
+				}
 			}
 			$("#mdnsdevliid").html(html);
 		}
 	});
+}
+
+//提示找到设备
+function findUnactiDev() {
+	if (1 == saytag) {
+		apiToast(FIND_UNACTIV_DEV, 5000);
+		saytag = 2;
+	}
 }
 
 //停止扫描

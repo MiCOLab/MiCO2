@@ -162,6 +162,9 @@ var ACTIVATE_DEV  ="唤醒我？";
 //真的要激活设备
 var SURE_ACTIV_DEV  ="那么，我就是你的人了";
 
+//发现未激活设备
+var FIND_UNACTIV_DEV  ="哎呀，被发现了";
+
 
 
 

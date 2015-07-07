@@ -730,7 +730,7 @@ function getWifiSsid() {
 //获取设备ip
 function getdevip() {
 	//	$("#popupeasy").popup("open");
-	if (api.systemVersion < "4.2") {
+	if (api.systemVersion < "4.4") {
 		showProgress(CONNECT_NET, false);
 		//		setTimeout("overTime('getdevipSign',getdevipSign)", 45000);
 		sysverid = 1;
@@ -1180,6 +1180,7 @@ function getmDNSlist() {
 		var html = "";
 		var sbtag = 0;
 		if (ret.status) {
+//			apiToast("ss", 1000);
 			$.each(ret.status, function(n, value) {
 				if (("false" == value.deviceMacbind)) {
 					sbtag = 1;
@@ -1211,6 +1212,23 @@ function stopMdns() {
 	micoMmdns.stopMdns(function(ret, err) {
 	});
 }
+
+//ssid，psw输入框失去焦点
+function onblurmDNS() {
+	if (api.systemVersion < "4.4") {
+		getmDNSlist();
+//		alert("onblurmDNS");
+	}
+}
+
+//ssid，psw输入框获得焦点
+function onfocusmDNS() {
+	if (api.systemVersion < "4.4") {
+		stopMdns();
+//		alert("onfocusmDNS");
+	}
+}
+
 
 ////编码格式的什么
 //function hex2bin(hex) {

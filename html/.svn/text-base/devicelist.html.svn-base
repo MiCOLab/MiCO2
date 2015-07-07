@@ -25,13 +25,13 @@
 		<script type="text/javascript" src="../script/jquery.md5.js"></script>
 		<style>
 			.micocontent {
-				margin-top: 44px;
+				margin-top: 43px;
 				background-color: #18161d;
 				text-shadow: none;
 			}
 			/*专门用户管理*/
 			.myselfcontent {
-				margin-top: 44px;
+				margin-top: 43px;
 				/*background-color: #31304a;*/
 				background-color: #18161d;
 				text-shadow: none;
@@ -382,22 +382,20 @@
 					<img src="../image/06connect-circle15.svg"/>&nbsp; <span>请将设备进行配网</span>
 				</div>
 				<div class="phoned">
-					<input type="text" data-theme="f" data-role="none" placeholder="Wi-Fi" id="wifi_ssid" readonly/>
+					<input type="text" data-theme="f" data-role="none" placeholder="WiFi名称" id="wifi_ssid" readonly/>
 				</div>
 				<div class="pswed">
-					<input type="text" data-theme="f" data-role="none"  placeholder="请输入Wi-Fi密码" id="wifi_psw"/>
+					<input type="text" data-theme="f" data-role="none"  placeholder="WiFi密码" id="wifi_psw" onblur="onblurmDNS()" onfocus="onfocusmDNS()"/>
 				</div>
 				<div class="subbutton" onclick="getdevip()" id="sousuoid">
 					<span><a class="easysearchcls" href="#" data-rel="popup" data-position-to="window" data-transition="none" data-dismissible="false">搜索 </a></span>
 				</div>
 			</div>
-			<div>
 			<div class="mdnsdevlistcls">
 				<ul class="mdnsdjhsb">待激活设备</ul>
 				<ul id="mdnsdevliid">
-					<li class="mdnsdevcls" onclick="ajaxgetdveid('adasdasdas')"><a><img src="../image/weijihuo.png"/><div><p class="mdnsdjhsbname">MK3288</p><p class="mdnsdjhsbip">192.168.1.23()</p></div></a></li>
+					<!--<li class="mdnsdevcls" onclick="ajaxgetdveid('adasdasdas')"><a><img src="../image/weijihuo.png"/><div><p class="mdnsdjhsbname">MK3288</p><p class="mdnsdjhsbip">192.168.1.23()</p></div></a></li>-->
 				</ul>
-			</div>
 			</div>
 		</div>
 		<!--EasyLink密码配置-->

@@ -94,7 +94,7 @@ err：
 
 ```js
 var micoMqtt = api.require("micoMqtt");
-var host = "http://api.easycc.io";
+var host = "api.easycc.io";
 var username = "";
 var password = "";
 var clientID = "aca213caec5c";
@@ -255,7 +255,7 @@ err：
 ```js
 var micoMqtt = api.require("micoMqtt");
 var topic = "d64f517c/in/read/app1";
-var command = "{}";
+var command = "{'power':1}";
 micoMqtt.publish({
 	topic : topic,
 	command : command

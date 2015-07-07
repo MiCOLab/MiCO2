@@ -556,7 +556,7 @@
 	color: #FFFFFF;
 }
 .mdnsdevcls {
-	height: 85px;
+	/*height: 85px;title 会错位*/
 	background-color: #222028;
 	margin-bottom: 2px;
 }

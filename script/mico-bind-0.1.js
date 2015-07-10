@@ -67,8 +67,8 @@
 						"title" : "Virtual device",
 						"titleSize" : "15",
 						"subTitle" : "MAC:00:01:6C:06:A6:29 (IP:192.168.1.2)",
-						"titleColor" : "#1c6ac6",
-						"subTitleColor" : "#895b5b"
+						"titleColor" : "#24C5C1",
+						"subTitleColor" : "#4A494D"
 						//"subTitle" : "MAC:" + this.bssid + "\r\nIP:" + this.ip
 					};
 					arrayObj.push(alias);

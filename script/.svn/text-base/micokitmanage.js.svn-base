@@ -133,7 +133,7 @@ function devicelist_getDevList() {
 				y : listy,
 				cellHeight : 85,
 				cellSelectColor : '#18161d',
-				leftBtn : [{}],
+//				leftBtn : [{}],
 				rightBtn : [{
 					bg : '#d4257f',
 					color : '#d4257f',
@@ -442,37 +442,37 @@ function jsontest(strjson) {
 						break;
 					//温度
 					case TEMP_DIC:
-						$("#devdataid").css("display", "block");
+//						$("#devdataid").css("display", "block");
 						$("#tempclsid").css("display", "block");
 						break;
 					//湿度
 					case HUMI_DIC:
-						$("#devdataid").css("display", "block");
+//						$("#devdataid").css("display", "block");
 						$("#humiclsid").css("display", "block");
 						break;
 					//距离
 					case PRO_SENSOR_DIC:
-						$("#devdataid").css("display", "block");
+//						$("#devdataid").css("display", "block");
 						$("#pro_sensorclsid").css("display", "block");
 						break;
 					//大气
 					case ATMO_SENSOR_DIC:
-						$("#devdataid").css("display", "block");
+//						$("#devdataid").css("display", "block");
 						$("#atmo_sensorclsid").css("display", "block");
 						break;
 					//三轴加速
 					case MONTION_SENSOR_DIC:
-						$("#devdataid").css("display", "block");
+//						$("#devdataid").css("display", "block");
 						$("#montion_sensorclsid").css("display", "block");
 						break;
 					//电机
 					case MOTOR_SENSOR_DIC:
-						$("#devdataid").css("display", "block");
+//						$("#devdataid").css("display", "block");
 						$("#motor_sensorclsid").css("display", "block");
 						break;
 					//红外
 					case INFRARED_DIC:
-						$("#devdataid").css("display", "block");
+//						$("#devdataid").css("display", "block");
 						$("#infraedclsid").css("display", "block");
 						break;
 				}

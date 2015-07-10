@@ -9,6 +9,8 @@
 		<link rel="stylesheet" type="text/css" href="../css/selflist.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/jquery.mobile.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/dragdealer.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/devlist.css">
 		<script type="text/javascript" src="../script/jquery-2.1.3.js"></script>
 		<script type="text/javascript" src="../script/jquery.mobile-1.4.5.min.js"></script>
 		<script type="text/javascript" src="../script/av-0.5.0.min.js"></script>
@@ -17,7 +19,7 @@
 		<script type="text/javascript" src="../script/mico-bind-0.1.js"></script>
 		<script type="text/javascript" src="../script/mico-user-0.1.js"></script>
 		<script type="text/javascript" src="../script/usermanage.js"></script>
-		<script type="text/javascript" src="../script/micokitmanage.js"></script>
+		<script type="text/javascript" src="../script/micokitmanagen.js"></script>
 		<script type="text/javascript" src="../script/mqttsev.js"></script>
 		<script type="text/javascript" src="../script/devdic.js"></script>
 		<script type="text/javascript" src="../script/msgdic-zh.js"></script>
@@ -513,7 +515,14 @@
 		<input type="hidden" id="devidtopic" value=""/>
 	</body>
 	<script type="text/javascript" src="../script/colorPicker.js"></script>
+	<script type="text/javascript" src="../script/swiper.min.js"></script>
 	<script type="text/javascript">
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView : 'auto',
+			paginationClickable : true,
+			resistanceRatio : 0,
+			longSwipesRatio : 0.1
+		});
 		//		给pop加载的时候用
 		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' + '<img style="width:250px;" src="../image/easylink.gif"/>' + '<div class="subbutton" id="stopelbtn">' + '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' + '</div>' + '</div>');
 		$jqelpop.appendTo($("#sousuoid")).popup();
@@ -532,10 +541,6 @@
 				$(".myselfcontent").css("margin-top", "60px");
 				$(".myselfcontented").css("margin-top", "61px");
 				listy = 67;
-			}
-			//临时应付小米2s的BUG
-			if(api.systemVersion < "4.4"){
-				$(".header").css("position", "absolute");
 			}
 			getUserToken();
 			devicelist_getDevList();

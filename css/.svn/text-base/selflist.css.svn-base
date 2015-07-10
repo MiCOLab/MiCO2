@@ -275,10 +275,11 @@
 }
 
 .pitu {
-	width: 30px;
+	/*width: 30px;*/
 	margin-top: 10px;
 	letter-spacing: 20px;
 	margin-left: 16px;
+	height: 23px;
 }
 .pitu img {
 	/*text-align: left;*/

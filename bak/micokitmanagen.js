@@ -114,8 +114,15 @@ function showAuthRefreshImg(tag) {
 	}
 }
 
-//获取账号下所有可以控制的设备
+
 function devicelist_getDevList() {
+	var devinfo = '<div class="swiper-container">' + '<div class="swiper-wrapper">' + '<div class="swiper-slide message">' + '<img src="../image/devimg2.png">' + '<p>' + '	<span class="dev_name">DeviceName</span>' + '	<br>' + '	MAC: 00:00:00:00:00:00' + '	<br>' + '	IP: 192.168.0.0' + '</p>' + '	</div>' + '	<div class="swiper-slide edit"></div>' + '	<div class="swiper-slide delete"></div>' + '</div>' + '</div>';
+	$("#homePage").html(devinfo);
+}
+
+
+//获取账号下所有可以控制的设备
+function devicelist_getDevList1() {
 	//	alert("devicelist_getDevList");
 	devlistobj = api.require('listView');
 	devlisttag = 0;

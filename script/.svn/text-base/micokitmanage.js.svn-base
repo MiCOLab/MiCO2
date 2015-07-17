@@ -863,7 +863,7 @@ function ajaxgetdveid(devip) {
 		buttons : [OK_BTN, CANCEL_BTN]
 	}, function(ret, err) {
 		if (ret.buttonIndex == 1) {
-			showProgress(SET_DEV_PSW, true);
+			showProgress(SET_DEV_PSW, false);
 			//此时正在搜索设备，不允许返回
 			//	PAGETAG = 101;
 			//	var dev_psw = $("#dev_psw").val();
@@ -1131,6 +1131,7 @@ function uartctrltoinfo() {
 
 function easylinktoList() {
 	stopMdns();
+	hidPro();
 	$(".mdnsdjhsb").css("display", "none");
 	//页面跳转
 	changpage("homePage", "MiCOKit");

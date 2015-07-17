@@ -561,21 +561,24 @@
 	background-color: #222028;
 	margin-bottom: 2px;
 }
+.mdnsdevcls a {
+	width: 100%;
+}
 .mdnsdevcls a img {
 	height: 53px;
+	float: left;
 	margin: 16px 0px 16px 16px;
 }
 .mdnsdevcls a div {
 	display: inline;
-	float: right;
-	margin: 25px 0px 16px 16px;
+	margin: 25px 16px 16px 16px;
 }
 .mdnsdjhsb {
 	background-color: rgb(46, 44, 54);
 	color: rgb(36, 197, 193);
 	padding: 10px 16px;
 	font-size: 13px;
-	margin:10px 0px 2px 0px;
+	margin: 10px 0px 2px 0px;
 	display: none;
 }
 .mdnsdjhsbname {
@@ -586,4 +589,32 @@
 	color: #4A494D;
 	font-size: 13px;
 	font-weight: normal;
+}
+.authlistcls {
+	margin: 16px 0px;
+}
+.authlistcls .aunamecls {
+	float: left;
+}
+.authlistcls .authctrlcls {
+	float: right;
+	height: 20px;
+	margin: 32px 16px;
+}
+.authlistcls .aunamecls p {
+	margin-top: 7px;
+	font-size: 15px;
+}
+.authaddcls{
+	margin: 32px 0px;
+	text-align: center;
+}
+.authaddcls img{
+	height: 15px;
+}
+.authaddcls span{
+	font-size: 15px;
+	color: #524c61;
+	font-weight: 100;
+	margin-left: 10px;
 }

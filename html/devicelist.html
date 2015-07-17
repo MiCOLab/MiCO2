@@ -151,6 +151,9 @@
 			#stopelbtn a span {
 				color: #105284;
 			}
+			#authuserlist{
+				margin-top: 41px;
+			}
 		</style>
 	</head>
 	<body>
@@ -393,7 +396,7 @@
 			</div>
 			<div class="mdnsdevlistcls">
 				<ul class="mdnsdjhsb">
-					待激活设备
+					待绑定设备
 				</ul>
 				<ul id="mdnsdevliid">
 					<!--<li class="mdnsdevcls" onclick="ajaxgetdveid('adasdasdas')"><a><img src="../image/weijihuo.png"/><div><p class="mdnsdjhsbname">MK3288</p><p class="mdnsdjhsbip">192.168.1.23()</p></div></a></li>-->
@@ -505,6 +508,37 @@
 					<li class="bk"></li>
 					<li class="banked" id="logout">
 						<a href="#"><span class="bank">退出登录</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--绑定用户列表-->
+		<div class="micocontent" data-role="page" id="authuserlist">
+			<div class="authlistcls" id="authlistid">
+				<!--<ul>
+					<li class="mdnsdevcls">
+						<a>
+							<img src="../image/userquery1.png"/>
+							<div class="aunamecls"><p style="color:#24c5c1">MK3288</p></div>
+							<img class="authctrlcls" src="../image/authdelete.svg"/>
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li class="mdnsdevcls">
+						<a>
+							<img src="../image/userquery2.png"/>
+							<div class="aunamecls"><p style="color:#882ab4">MK3288</p></div>
+							<img class="authctrlcls" src="../image/authdelete.svg"/>
+						</a>
+					</li>
+				</ul>-->
+			</div>
+			<div class="authaddcls" id="authaddid">
+				<ul>
+					<li>
+						<img src="../image/authadd.svg"/>
+						<span>添加新用户</span>
 					</li>
 				</ul>
 			</div>
@@ -668,6 +702,11 @@
 				uartcode = '{"' + MOTOR_KEY + '":1}';
 				micoPublish(DEVID_GLOBAL + "/in/write/" + app1, uartcode);
 			}
+		});
+		
+		//添加新用户
+		$("#authaddid").click(function(){
+			addNewUser();
 		});
 	</script>
 	<!--以下是画圆圈的-->

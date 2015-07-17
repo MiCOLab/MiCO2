@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<!-- Link Swiper's CSS -->
-		<link rel="stylesheet" href="../css/swiper.min.css">
-		<link rel="stylesheet" href="../css/devlist.css">
+		<link rel="stylesheet" href="./swiper.min.css">
+		<link rel="stylesheet" href="./devlist.css">
 		<!-- Demo styles -->
 		<style>
 			

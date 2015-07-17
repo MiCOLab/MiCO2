@@ -150,6 +150,11 @@ var EDI_SUCCESS  ="success";
 //激活成功
 var ACTIVATE_SUCC  ="Activate Success";
 
+//删除设备下某个用户
+var DEL_DEV_USER_SUC = "Bye-bye";
+
+//删除设备
+var DEL_DEV_USER_SUC = "No way";
 
 
 

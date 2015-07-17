@@ -16,6 +16,7 @@ var DEVID_GLOBAL = "";
 //8 authpage
 //100 EasyLink配网
 //101 EasyLink给设备设置密码
+//9 设备下用户列表
 var PAGETAG = 1;
 //js页面定时2秒publish
 var selfInterval;
@@ -70,6 +71,8 @@ var sysverid = 0;
 var micoMmdns;
 //是否提示找到设备
 var saytag = 0;
+//授权页面的devid
+var _currentDevid;
 //界面是否可以touchmove
 var touchmove_listener = function(event) {
 	event.preventDefault();
@@ -137,12 +140,12 @@ function devicelist_getDevList() {
 				rightBtn : [{
 					bg : '#d4257f',
 					color : '#d4257f',
-					title : '删除',
+					title : '解绑',
 					icon : "widget://image/smallicon-8.png"
 				}, {
 					bg : '#d35f84',
 					color : '#d35f84',
-					title : '修改',
+					title : '改名',
 					icon : "widget://image/smallicon-9.png"
 				}],
 				"borderColor" : "#18161d",
@@ -247,6 +250,7 @@ function devicelist_getAuthDev() {
 				h : 800,
 				y : listy,
 				cellHeight : 85,
+				cellSelectColor : '#18161d',
 				"borderColor" : "#18161d",
 				"cellBgColor" : "#222028",
 				imgHeight : '53',
@@ -256,20 +260,25 @@ function devicelist_getAuthDev() {
 				var clickIndex = openret.index;
 				//整行选择
 				if (clickIndex >= 0) {
-					api.prompt({
-						title : GIVE_AUTH,
-						msg : ENTER_PHONE,
-						buttons : [OK_BTN, CANCEL_BTN]
-					}, function(ret, err) {
-						if (ret.buttonIndex == 1) {
-							var phone = ret.text;
-							if (true != isphone2(phone)) {
-								apiToast(CONFIRM_PHONE, 1000);
-							} else {
-								remoteAuthdev(devinfo.devId[clickIndex], phone);
-							}
-						}
-					});
+//					api.prompt({
+//						title : GIVE_AUTH,
+//						msg : ENTER_PHONE,
+//						buttons : [OK_BTN, CANCEL_BTN]
+//					}, function(ret, err) {
+//						if (ret.buttonIndex == 1) {
+//							var phone = ret.text;
+//							if (true != isphone2(phone)) {
+//								apiToast(CONFIRM_PHONE, 1000);
+//							} else {
+//								remoteAuthdev(devinfo.devId[clickIndex], phone);
+//							}
+//						}
+//					});
+					changpage("authuserlist", ret[openret.index].title+"下的用户");
+					authdevobj.close();
+					PAGETAG = 9;
+					getDevUserQUery(devinfo.devId[clickIndex]);
+					removeTouchMove();
 				}
 			});
 			//刷新的小箭头，不可为空
@@ -309,6 +318,77 @@ function devicelist_getAuthDev() {
 	});
 }
 
+
+//列出设备下所有用户
+function getDevUserQUery(devid) {
+	$mico.devUserQuery(APP_ID, userToken, devid, function(ret, err) {
+		if (ret) {
+//			alert(JSON.stringify(ret));
+			var html = "";
+			var i = 0;
+			var index = 0;
+			var color = ["24c5c1","882ab4","23c3e0","c73652","2fb172","b1a62f"];
+			$.each(ret, function(n, value) {
+				index = ((i++) % 6 + 1);
+				html += '<ul>'
+					+'<li class="mdnsdevcls">'
+					+	'<a>'
+					+		'<img src="../image/userquery'+index+'.png"/>'
+					+		'<div class="aunamecls"><p style="color:#'+ color[index-1] +'">'+ value.username +'</p></div>';
+				if("share" == value.role){
+					html += '<img class="authctrlcls" onclick="deleteThisUser(\'' + devid + '\',\'' + value.id + '\')" src="../image/authdelete.svg"/>';
+				}
+				html += '</a>'
+					+'</li>'
+					+'</ul>';
+			});
+			$("#authlistid").html(html);
+			_currentDevid = devid;
+		} else {
+			alert(JSON.stringify(err));
+		}
+	});
+}
+
+//为当前设备添加一个用户
+function addNewUser() {
+	api.prompt({
+		title : GIVE_AUTH,
+		msg : ENTER_PHONE,
+		buttons : ["变管理员", "变用户",CANCEL_BTN]
+	}, function(ret, err) {
+		var phone = ret.text;
+		if (ret.buttonIndex == 1) {
+			if (true != isphone2(phone)) {
+				apiToast(CONFIRM_PHONE, 1000);
+			} else {
+				remoteAuthdev(_currentDevid, phone, "owner");
+			}
+		}else if(ret.buttonIndex == 2){
+			if (true != isphone2(phone)) {
+				apiToast(CONFIRM_PHONE, 1000);
+			} else {
+				remoteAuthdev(_currentDevid, phone, "share");
+			}
+		}
+	});
+}
+
+//删除此设备的一个用户
+function deleteThisUser(devid, userid) {
+	//	alert(devid);
+	//	alert(userid);
+	$mico.deleteOneUser(APP_ID,userToken, userid, devid, function(ret, err) {
+		if (ret) {
+			apiToast(DEL_DEV_USER_SUC, 2000);
+			getDevUserQUery(_currentDevid);
+		} else {
+			apiToast(DEL_DEV_USER_ERR, 2000);
+		}
+	});
+}
+
+
 //修改设备名字
 function modifyDevName(devid, indexNo) {
 	api.prompt({
@@ -340,7 +420,7 @@ function modifyDevName(devid, indexNo) {
 	});
 }
 
-//删除设备
+//解绑设备
 function deleteDevName(devid, indexNo) {
 	api.confirm({
 		title : DEL_DEV,
@@ -834,10 +914,11 @@ function bindtocloud(devid) {
 * 设备授权部分
 */
 //设备授权
-function remoteAuthdev(devid, phone) {
-	$mico.authDev(APP_ID, userToken, phone, devid, function(ret, err) {
+function remoteAuthdev(devid, phone, role) {
+	$mico.authDev(APP_ID, userToken, phone, devid, role, function(ret, err) {
 		if (ret) {
 			apiToast(AUTH_SUCCESS, 2000);
+			getDevUserQUery(_currentDevid);
 		} else {
 			apiToast(NOT_EXIST, 2000);
 			//			alert(JSON.stringify(err));
@@ -963,6 +1044,8 @@ function checkpage() {
 		feedtomyself();
 	} else if (PAGETAG == 8) {
 		authtomyself();
+	} else if (PAGETAG == 9) {
+		devusertoauto();
 	} else if (PAGETAG == 0) {
 		apiToast(NOT_ALW_RT, 2000);
 	} else if (PAGETAG == 100) {
@@ -1066,6 +1149,14 @@ function authtomyself() {
 	changpage("myselfpage", "");
 	authdevobj.close();
 	PAGETAG = 6;
+}
+
+//设备下用户列表2授权界面
+function devusertoauto() {
+	changpage("authpage", "授权");
+	PAGETAG = 8;
+	devicelist_getAuthDev();
+	addTouchMove();
 }
 
 //从底部的弹窗，毫秒级

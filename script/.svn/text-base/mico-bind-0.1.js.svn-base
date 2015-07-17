@@ -26,7 +26,10 @@
 				var alias;
 				if (0 != ret.data.length) {
 					var i = 0;
+					var index = 0;
+					var color = ["23c3e0", "18ae9f", "f4378b", "37a2f4", "ca37f4"];
 					$(ret.data).each(function() {
+						index = ((i++) % 5 + 1);
 						//设备图标
 						var imgPath;
 						//设备名字
@@ -34,9 +37,9 @@
 						var titleColor;
 						var subTitleColor;
 						if (this.online == "1") {
-							imgPath = "widget://image/devimg" + ((i++) % 5 + 1) + ".png";
+							imgPath = "widget://image/devimg" + index + ".png";
 							devName = this.alias;
-							titleColor = "#24C5C1";
+							titleColor = "#" + color[index - 1];
 							subTitleColor = "#4A494D";
 						} else {
 							imgPath = "widget://image/devoffline.png";
@@ -100,14 +103,18 @@
 				if (ret.data) {
 					var arrayObj = new Array();
 					var alias;
+					var i = 0;
+					var index = 0;
+					var color = ["3cb65c", "23c3e0", "32dec0", "a732de", "de328b" ,"decc32"];
 					$(ret.data).each(function() {
+						index = ((i++) % 6 + 1);
 						alias = {
-							"img" : "widget://image/authdev.png",
+							"img" : "widget://image/authdev" + index + ".png",
 							"title" : this.alias,
 							"titleSize" : "15",
 							//"subTitle" : "MAC:" + this.bssid + "\r\nIP:" + this.ip
 							"subTitle" : "MAC:" + this.bssid + " (IP:" + this.ip + ")",
-							"titleColor" : "#24C5C1",
+							"titleColor" : "#" + color[index - 1],
 							"subTitleColor" : "#4A494D"
 						};
 						devinfo.devId.push(this.id);
@@ -143,6 +150,55 @@
 			},
 			success : function(ret) {
 				callback("success", errm);
+			},
+			error : function(err) {
+				callback(sucm, err);
+			}
+		});
+	};
+
+	//列出设备下所有用户
+	m.devUserQuery = function(appid, usertoken, devid, callback) {
+		var sucm;
+		var errm;
+		$.ajax({
+			url : "http://www.easylink.io/v1/device/user/query",
+			type : 'POST',
+			data : JSON.stringify({
+				device_id : devid
+			}),
+			headers : {
+				"Content-Type" : "application/json",
+				"X-Application-Id" : appid,
+				"Authorization" : "token " + usertoken
+			},
+			success : function(ret) {
+				callback(ret, errm);
+			},
+			error : function(err) {
+				callback(sucm, err);
+			}
+		});
+	};
+
+	//删除设备下的某个用户
+	m.deleteOneUser = function(appid,usertoken, userid, devid, callback) {
+		var sucm;
+		var errm;
+		$.ajax({
+			url : "http://www.easylink.io/v1/device/user/delete",
+			type : 'POST',
+			data : JSON.stringify({
+				device_id : devid,
+				user_id : userid
+			}),
+			headers : {
+				"Content-Type" : "application/json",
+				"X-Application-Id" : appid,
+				"Authorization" : "token " + usertoken
+			},
+			success : function(ret) {
+				callback(ret, errm);
 			},
 			error : function(err) {
 				callback(sucm, err);
@@ -248,7 +304,7 @@
 	};
 
 	//授权设备
-	m.authDev = function(appid, usertoken, phone, devid, callback) {
+	m.authDev = function(appid, usertoken, phone, devid, role, callback) {
 		var sucm;
 		var errm;
 		$.ajax({
@@ -256,7 +312,7 @@
 			type : 'POST',
 			data : {
 				login_id : phone,
-				owner_type : "share",
+				owner_type : role,
 				id : devid,
 			},
 			headers : {

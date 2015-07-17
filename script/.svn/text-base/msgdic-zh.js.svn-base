@@ -165,6 +165,12 @@ var SURE_ACTIV_DEV  ="那么，我就是你的人了";
 //发现未激活设备
 var FIND_UNACTIV_DEV  ="哎呀，被发现了";
 
+//删除设备下某个用户
+var DEL_DEV_USER_SUC = "拜拜";
+
+//删除设备
+var DEL_DEV_USER_ERR = "不可以";
+
 
 
 

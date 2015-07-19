@@ -527,8 +527,8 @@
 }
 /*feedback*/
 .fdcontent {
-	margin: 21px 30px 0px 30px;
-	padding: 21px 19px;
+	margin: 30px 30px 0px 30px;
+	padding: 10px 19px 20px 19px;
 	/*background-color: #FFFFFF;*/
 	background-color: #222028;
 	border-radius: 5px;
@@ -537,7 +537,7 @@
 	border: 1px dashed #0088CC;
 	font-size: 14px;
 	font-family: arial;
-	color: #2981c5;
+	color: #23c3e0;
 }
 .fdcontent span {
 	color: #2981c5;

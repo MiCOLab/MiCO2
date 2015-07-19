@@ -192,7 +192,7 @@
 		});
 	};
 
-	//注册用户
+	//发送反馈信息
 	m.sendFeedback = function(phone, content, callback) {
 		var sucm;
 		var errm;

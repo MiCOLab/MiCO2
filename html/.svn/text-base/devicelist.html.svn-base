@@ -154,6 +154,9 @@
 			#authuserlist{
 				margin-top: 41px;
 			}
+			#savefd{
+				margin-top: 19px;
+			}
 		</style>
 	</head>
 	<body>
@@ -441,12 +444,12 @@
 				<ul>
 					<li class="myselfrow myselflistcls" >
 						<div>
-							<a href="#" id="toAuthpage"><img src="../image/03my account-Authorize70.svg"/><span class="lvzi">授权</span></a><a href="#" id="tofbpage"><img src="../image/03my account-feedback70.svg"/><span class="lanzi">反馈</span></a>
+							<a href="#" id="toAuthpage"><img src="../image/03my account-Authorize70.svg"/><span class="lvzi">授权管理</span></a><a href="#" id="tofbpage"><img src="../image/03my account-feedback70.svg"/><span class="lanzi">反馈</span></a>
 						</div>
 					</li>
 					<li class="myselfrow myselflistcls" >
 						<div>
-							<a href="#" id="touphispage"><img src="../image/03my account-update70.svg"/><span class="lanzi">系统升级</span></a><a href="#"><img src="../image/03my account-guide70.svg"/><span class="lvzi">导航</span></a>
+							<a href="#" id="touphispage"><img src="../image/03my account-update70.svg"/><span class="lanzi">更新日志</span></a><a href="#"><img src="../image/03my account-guide70.svg"/><span class="lvzi">导航</span></a>
 						</div>
 					</li>
 					<!--<!--<li class="myselfrow myselflistcls" id="logout">
@@ -549,7 +552,9 @@
 	<script type="text/javascript" src="../script/colorPicker.js"></script>
 	<script type="text/javascript">
 		//		给pop加载的时候用
-		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' + '<img style="width:250px;" src="../image/easylink.gif"/>' + '<div class="subbutton" id="stopelbtn">' + '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' + '</div>' + '</div>');
+		var $jqelpop = $('<div data-role="popup" id="popupeasy" data-overlay-theme="b" data-dismissible="false" >' 
+		+ '<img style="width:250px;" src="../image/easylink.gif"/>' + '<div class="subbutton" id="stopelbtn">' 
+		+ '<a class="stopacls" data-rel="back"><span>结束配网</span></a>' + '</div>' + '</div>');
 		$jqelpop.appendTo($("#sousuoid")).popup();
 		var strDM;
 		apiready = function() {
@@ -635,7 +640,7 @@
 		});
 		//		前往feedback页面
 		$("#tofbpage").click(function() {
-			changpage("feedbackpage", "吐槽");
+			changpage("feedbackpage", "反馈");
 			PAGETAG = 7;
 		});
 		//前往用户信息修改界面
@@ -646,14 +651,14 @@
 		});
 		//		前往Update页面
 		$("#touphispage").click(function() {
-			changpage("uphispage", "更新历史");
+			changpage("uphispage", "更新日志");
 			var showid = $("#uphistextid");
 			readHisFile("uphis.txt", showid);
 			PAGETAG = 7;
 		});
 		//		前往authorize页面
 		$("#toAuthpage").click(function() {
-			changpage("authpage", "授权");
+			changpage("authpage", "授权管理");
 			PAGETAG = 8;
 			devicelist_getAuthDev();
 		});

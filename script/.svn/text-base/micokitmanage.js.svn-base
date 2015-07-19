@@ -119,13 +119,13 @@ function showAuthRefreshImg(tag) {
 
 //获取账号下所有可以控制的设备
 function devicelist_getDevList() {
-	//	alert("devicelist_getDevList");
+//		alert("devicelist_getDevList");
 	devlistobj = api.require('listView');
 	devlisttag = 0;
 	showRefreshImg(1);
 	var t = setTimeout("showRefreshImg(2)", 3 * 1000)
 	$mico.getDevList(userToken, function(ret, err, devinfocb) {
-		//		alert(JSON.stringify(devinfo));
+//				alert(JSON.stringify(ret));
 		if (ret && (1 == PAGETAG)) {
 			devinfo = devinfocb;
 			devlisttag = 1;
@@ -810,13 +810,23 @@ function getWifiSsid() {
 //获取设备ip
 function getdevip() {
 	//	$("#popupeasy").popup("open");
-	if (api.systemVersion < "4.4") {
+	
+	alert(api.systemType+" "+api.systemVersion);
+	if (api.systemVersion > "4.3" && (api.systemType != 'ios')) {
+		setTimeout('$("#popupeasy").popup("open")', 1000);
+	} else {
 		showProgress(CONNECT_NET, false);
 		//		setTimeout("overTime('getdevipSign',getdevipSign)", 45000);
 		sysverid = 1;
-	} else {
-		setTimeout('$("#popupeasy").popup("open")', 1000);
 	}
+	
+//	if (api.systemVersion < "4.4") {
+//		showProgress(CONNECT_NET, false);
+//		//		setTimeout("overTime('getdevipSign',getdevipSign)", 45000);
+//		sysverid = 1;
+//	} else {
+//		setTimeout('$("#popupeasy").popup("open")', 1000);
+//	}
 	//此时正在搜索设备，不允许返回
 	PAGETAG = 100;
 	getdevipSign = 1;
@@ -828,29 +838,29 @@ function getdevip() {
 		wifi_ssid : wifi_ssid,
 		wifi_password : wifi_psw
 	}, function(ret, err) {
-		if (1 == getdevipSign) {
-			getdevipSign = 0;
-			sysverid = 0;
-			if (ret.devip) {
-				dev_token = $.md5(ret.devip + userToken);
-				dev_ip = ret.devip;
-				//changpage("devmanage", "设置设备密码");
-				if (1 == sysverid) {
-					hidPro();
-				}
-				//				$("#backleft").css("display", "none");
-			} else {
-				$("#backleft").css("display", "block");
-				if (1 == sysverid) {
-					hidPro();
-				}
-				api.alert({
-					msg : err.msg
-				});
-			}
-			$("#popupeasy").popup("close");
-			PAGETAG = 5;
-		}
+//		if (1 == getdevipSign) {
+//			getdevipSign = 0;
+//			sysverid = 0;
+//			if (ret.devip) {
+//				dev_token = $.md5(ret.devip + userToken);
+//				dev_ip = ret.devip;
+//				//changpage("devmanage", "设置设备密码");
+//				if (1 == sysverid) {
+//					hidPro();
+//				}
+//				//				$("#backleft").css("display", "none");
+//			} else {
+//				$("#backleft").css("display", "block");
+//				if (1 == sysverid) {
+//					hidPro();
+//				}
+//				api.alert({
+//					msg : err.msg
+//				});
+//			}
+//			$("#popupeasy").popup("close");
+//			PAGETAG = 5;
+//		}
 	});
 }
 
@@ -901,7 +911,7 @@ function bindtocloud(devid) {
 			apiToast(ACTIVATE_SUCC, 2000);
 			hidPro();
 			//	刷新内容
-			devicelist_getDevList();
+//			devicelist_getDevList();
 		} else {
 			$("#backleft").css("display", "block");
 			hidPro();
@@ -1253,7 +1263,7 @@ function removeTouchMove() {
 
 //停止发包
 function stopEasyLink() {
-	micobindobj = api.require('micoBind');
+//	micobindobj = api.require('micoBind');
 	micobindobj.stopFtc(function(ret, err) {
 	});
 }

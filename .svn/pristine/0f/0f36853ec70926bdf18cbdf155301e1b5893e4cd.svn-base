@@ -43,7 +43,7 @@ var DEL_DEV = "删除设备";
 var R_U_SURE = "这样真的好吗";
 
 //配网中
-var CONNECT_NET = "配网中，10秒见效";
+var CONNECT_NET = "配网中，此过程大约需要10-20秒";
 
 //设置设备密码
 var SET_DEV_PSW = "激活中...";

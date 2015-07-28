@@ -1298,9 +1298,7 @@ function findUnactiDev() {
 	if (1 == saytag) {
 		apiToast(FIND_UNACTIV_DEV, 5000);
 		saytag = 2;
-		if(1 == sysverid){
-			hidPro();
-		}
+		hidPro();
 		api.confirm({
 			title : TBC_BING,
 			msg : CLICK_HIM,
